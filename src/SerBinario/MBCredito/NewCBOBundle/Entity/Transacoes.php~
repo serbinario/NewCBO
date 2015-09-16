@@ -1,0 +1,207 @@
+<?php
+
+namespace SerBinario\MBCredito\NewCBOBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Transacoes
+ *
+ * @ORM\Table(name="transacoes", indexes={@ORM\Index(name="fk_transacoes_operadores_idx", columns={"operadores_id_operadores"}), @ORM\Index(name="fk_transacoes_arquivo_cabecalho1_idx", columns={"arquivo_cabecalho_id_arquivo_cabecalho"}), @ORM\Index(name="fk_transacoes_transacoes1_idx", columns={"transacoes_id_transacoes"}), @ORM\Index(name="fk_transacoes_lojas1_idx", columns={"lojas_id_lojas"})})
+ * @ORM\Entity
+ */
+class Transacoes
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_transacoes", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $idTransacoes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="banco_transacoes", type="string", length=5, nullable=true)
+     */
+    private $bancoTransacoes;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_transacoes", type="date", nullable=true)
+     */
+    private $dataTransacoes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cod_agencia_rel_transacoes", type="string", length=5, nullable=true)
+     */
+    private $codAgenciaRelTransacoes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cod_sequencia_op_transacoes", type="string", length=5, nullable=true)
+     */
+    private $codSequenciaOpTransacoes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cod_transacoes", type="string", length=5, nullable=true)
+     */
+    private $codTransacoes;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_movimento_transacoes", type="date", nullable=true)
+     */
+    private $dataMovimentoTransacoes;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="hora_transacoes", type="time", nullable=true)
+     */
+    private $horaTransacoes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="valor_transacoes", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $valorTransacoes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cod_pdv_transacoes", type="string", length=5, nullable=true)
+     */
+    private $codPdvTransacoes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="forma_liq_transacoes", type="string", length=5, nullable=true)
+     */
+    private $formaLiqTransacoes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cod_linha_transacoes", type="string", length=5, nullable=true)
+     */
+    private $codLinhaTransacoes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numero_convenio_transacoes", type="string", length=10, nullable=true)
+     */
+    private $numeroConvenioTransacoes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numero_proposta_transacoes", type="string", length=10, nullable=true)
+     */
+    private $numeroPropostaTransacoes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipo_liberacao_transacoes", type="string", length=5, nullable=true)
+     */
+    private $tipoLiberacaoTransacoes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="qtd_parcelas_transacoes", type="string", length=5, nullable=true)
+     */
+    private $qtdParcelasTransacoes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numero_prop_vinculada_transacoes", type="string", length=10, nullable=true)
+     */
+    private $numeroPropVinculadaTransacoes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="valor_troco_transacoes", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $valorTrocoTransacoes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="custo_convenio_transacoes", type="string", length=5, nullable=true)
+     */
+    private $custoConvenioTransacoes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="seguimento_convenio_transacoes", type="string", length=5, nullable=true)
+     */
+    private $seguimentoConvenioTransacoes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="taxa_mensal_transacoes", type="string", length=5, nullable=true)
+     */
+    private $taxaMensalTransacoes;
+
+    /**
+     * @var \Operadores
+     *
+     * @ORM\ManyToOne(targetEntity="Operadores")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="operadores_id_operadores", referencedColumnName="id_operadores")
+     * })
+     */
+    private $operadoresOperadores;
+
+    /**
+     * @var \ArquivoCabecalho
+     *
+     * @ORM\ManyToOne(targetEntity="ArquivoCabecalho")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="arquivo_cabecalho_id_arquivo_cabecalho", referencedColumnName="id_arquivo_cabecalho")
+     * })
+     */
+    private $arquivoCabecalhoArquivoCabecalho;
+
+    /**
+     * @var \Transacoes
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Transacoes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="transacoes_id_transacoes", referencedColumnName="id_transacoes")
+     * })
+     */
+    private $transacoesTransacoes;
+
+    /**
+     * @var \Lojas
+     *
+     * @ORM\ManyToOne(targetEntity="Lojas")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="lojas_id_lojas", referencedColumnName="id_lojas")
+     * })
+     */
+    private $lojasLojas;
+
+
+}

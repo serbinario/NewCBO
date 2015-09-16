@@ -1,0 +1,39 @@
+<?php
+
+namespace SerBinario\MBCredito\NewCBOBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Lojas
+ *
+ * @ORM\Table(name="lojas")
+ * @ORM\Entity
+ */
+class Lojas
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_lojas", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idLojas;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codigo_lojas", type="string", length=5, nullable=false)
+     */
+    private $codigoLojas;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="uf_lojas", type="string", length=5, nullable=true)
+     */
+    private $ufLojas;
+
+
+}

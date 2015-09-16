@@ -1,0 +1,13 @@
+root:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /cbo/viewImportFile
+        permanent: true
+
+new_cbo:
+    resource: "@NewCBOBundle/Controller/"
+    type:     annotation
+    prefix:   /cbo
+
+

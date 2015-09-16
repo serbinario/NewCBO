@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+        <title>{% block title %}CBO - MBCREDITO{% endblock %}</title>        
+        {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}        
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{asset('css/bootstrap_paperv3.3.2.min.css')}}" /> 
+            <link rel="stylesheet" href="{{asset('css/dataTable.css')}}" />
+            <link rel="stylesheet" href="{{asset('css/bootstrapValidator.min.css')}}" />    
+            <link rel="stylesheet" href="{{asset('css/jquery.datetimepicker.css')}}" />            
+            <style type="text/css" rel="stylesheet">
+                .marginBottom-0 {margin-bottom:0;}
+                #spanClinte {margin-left: 30px;}
+
+                .dropdown-submenu{position:relative;}
+                .dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
+                .dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#cccccc;margin-top:5px;margin-right:-10px;}
+                .dropdown-submenu:hover>a:after{border-left-color:#555;}
+                .dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}
+                .bs-example{
+                    margin: 20px;
+                }
+                input[type='text']{ text-transform: uppercase; }
+                .username{
+                    text-transform: none;
+                }
+            </style>
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}
+            <div class="bs-example">
+                <nav role="navigation" class="navbar navbar-inverse">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>                        
+                    </div>
+                    <!-- Collection of nav links and other content for toggling -->
+                    <div id="navbarCollapse" class="collapse navbar-collapse">                        
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">CBO <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ path('viewImportFile') }}">IMPORTAR ARQUIVO</a>         
+                                    </li>                                    
+                                    <li>
+                                        <a href="{{ path('gridTransacoes') }}">PESQUISA</a>         
+                                    </li>
+                                    <li>
+                                        <a href="">AGENTES</a> 
+                                    </li>
+                                </ul>                                
+                            </li>
+                        </ul>
+                                    
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">CALLCENTER <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">                                                                      
+                                    <li>
+                                        <a href="">CHAMADAS</a>         
+                                    </li>
+                                    <li>
+                                        <a href="">AGÊNCIAS</a>         
+                                    </li>
+                                    <li>
+                                        <a href="">CONVÊNIOS</a>         
+                                    </li>
+                                </ul>                                
+                            </li>
+                        </ul>
+                                    
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="">SAIR</a></li>
+                        </ul>
+                    </div>             
+                </nav>               
+            </div>
+        {% endblock %}
+
+        {% block javascripts %}            
+            <script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
+            <!-- Include all JavaScripts, compiled by Assetic -->
+            <script type="text/javascript" src="{{asset('js/bootstrap.js')}}"></script>
+            <script type="text/javascript" src="{{asset('js/bootstrap3-typeahead.js')}}"></script>
+            <!-- include form validation  -->
+            <script type="text/javascript" src="{{asset('js/bootstrapValidator.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('js/jquery.datetimepicker.js')}}"></script>
+            <!-- include form Bootbox  -->
+            <script type="text/javascript" src="{{asset('js/bootbox.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('js/jquery.inputmask.bundle.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('js/components_form_tools.js')}}"></script>
+            <script type="text/javascript" src="{{asset('js/source/campos_toUpperCase.js')}}"></script>
+            <script type="text/javascript" src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('js/jquery.mask.js')}}"></script>
+            <script type="text/javascript" src="{{asset('js/mask/mask.js')}}"></script>
+            <script type="text/javascript" >
+                $(document).ready(function () {
+                    $('.datepicker').datetimepicker({
+                        format: 'd/m/Y H:i',
+                        mask: false,
+                        lang: 'pt-BR'
+                    });
+
+                    $('.datenottime').datetimepicker({
+                        format: 'd/m/Y',
+                        mask: false,
+                        timepicker: false,
+                        lang: 'pt-BR'
+                    });
+
+                    $('.timepicker').datetimepicker({
+                        format: 'H:i:s',
+                        datepicker: false,
+                        timepicker: false,
+                        mask: true,
+                        lang: 'pt-BR'
+                    });
+                });
+            </script>
+        {% endblock %}
+    </body>
+</html>

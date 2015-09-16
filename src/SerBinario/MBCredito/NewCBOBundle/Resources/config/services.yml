@@ -1,0 +1,42 @@
+parameters:
+    rn.class.arquivoCBF:            SerBinario\MBCredito\NewCBOBundle\RN\ArquivoCBFRN
+    rn.class.CBF:                   SerBinario\MBCredito\NewCBOBundle\RN\CBFRN
+    rn.class.transacoes:            SerBinario\MBCredito\NewCBOBundle\RN\TransacoesRN  
+    dao.class.arquivoCabecalho:     SerBinario\MBCredito\NewCBOBundle\DAO\ArquivoCabecalhoDAO
+    dao.class.arquivoCBF:           SerBinario\MBCredito\NewCBOBundle\DAO\ArquivoCBFDAO
+    dao.class.transacoes:           SerBinario\MBCredito\NewCBOBundle\DAO\TransacoesDAO   
+    dao.class.operadores:           SerBinario\MBCredito\NewCBOBundle\DAO\OperadoresDAO   
+    dao.class.lojas:                SerBinario\MBCredito\NewCBOBundle\DAO\LojasDAO   
+
+services:
+    dao_arquivoCBF:
+        class:        %dao.class.arquivoCBF%
+        arguments:    [ @doctrine.orm.entity_manager ]
+    
+    dao_arquivoCabecalho:
+        class:        %dao.class.arquivoCabecalho%
+        arguments:    [ @doctrine.orm.entity_manager ]
+    
+    dao_transacoes:
+        class:        %dao.class.transacoes%
+        arguments:    [ @doctrine.orm.entity_manager ]
+    
+    dao_operadores:
+        class:        %dao.class.operadores%
+        arguments:    [ @doctrine.orm.entity_manager ]
+    
+    dao_lojas:
+        class:        %dao.class.lojas%
+        arguments:    [ @doctrine.orm.entity_manager ]
+        
+    rn_arquivoCBF:
+        class:        %rn.class.arquivoCBF%
+        arguments:    [ @dao_arquivoCBF ]
+    
+    rn_CBF:
+        class:        %rn.class.CBF%
+        arguments:    [ @dao_arquivoCabecalho, @dao_transacoes, @dao_operadores, @dao_lojas ]
+    
+    rn_transacoes:
+        class:        %rn.class.transacoes%
+        arguments:    [ @dao_transacoes ]

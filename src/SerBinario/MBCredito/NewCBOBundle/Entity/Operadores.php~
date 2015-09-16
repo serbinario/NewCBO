@@ -1,0 +1,39 @@
+<?php
+
+namespace SerBinario\MBCredito\NewCBOBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Operadores
+ *
+ * @ORM\Table(name="operadores")
+ * @ORM\Entity
+ */
+class Operadores
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_operadores", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idOperadores;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cod_operadores", type="string", length=20, nullable=false)
+     */
+    private $codOperadores;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome_operadores", type="string", length=50, nullable=true)
+     */
+    private $nomeOperadores;
+
+
+}
