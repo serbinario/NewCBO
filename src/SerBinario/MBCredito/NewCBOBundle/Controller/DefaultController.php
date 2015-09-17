@@ -164,7 +164,7 @@ class DefaultController extends Controller
 
         $this->get("session")->set("camposPesquisaCBO", $camposPesquisa);
 
-        return $this->redirect($this->generateUrl("gridTransacoes"));
+        return $this->redirect($this->redirectToRoute("gridTransacoes"));
     }
     
     
