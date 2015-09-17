@@ -1,0 +1,34 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        {% for label, flashes in app.session.flashbag.all %}
+            {% for flash in flashes %}
+                <div class="alert alert-dismissable alert-{{ label }}">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {{ flash }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        <div class="row clearfix">
+            <br />
+            <legend>Alteração dos Agentes</legend>
+            <div class="col-md-13 column">
+                {{ form_start(form, { 'style': 'horizontal' }) }}                    
+                    {{ form_row(form.operadorChave) }}   
+                    {{ form_row(form.nomeOperador) }} 
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}     
+    {{ parent() }}
+    <script type="text/javascript" language="javascript" class="init">
+        $("#serbinario_mbcredito_cbobundle_operadores_actions_voltar").click(function() {
+            javascript:history.back();
+        });
+    </script>
+{% endblock %}

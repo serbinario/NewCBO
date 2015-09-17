@@ -1,0 +1,42 @@
+parameters:
+    rn.class.clientes:      SerBinario\MBCredito\CallCenterBundle\RN\ClientesRN
+    rn.class.chamadas:      SerBinario\MBCredito\CallCenterBundle\RN\ChamadasRN
+    rn.class.agencia:       SerBinario\MBCredito\CallCenterBundle\RN\AgenciaRN
+    rn.class.convenio:      SerBinario\MBCredito\CallCenterBundle\RN\ConvenioRN
+    dao.class.chamadas:     SerBinario\MBCredito\CallCenterBundle\DAO\ChamadasDAO
+    dao.class.clientes:     SerBinario\MBCredito\CallCenterBundle\DAO\ClientesDAO
+    dao.class.agencia:      SerBinario\MBCredito\CallCenterBundle\DAO\AgenciaDAO   
+    dao.class.convenio:     SerBinario\MBCredito\CallCenterBundle\DAO\ConvenioDAO
+
+services:
+    dao_clientes:
+        class:        %dao.class.clientes%
+        arguments:    [ @doctrine.orm.entity_manager ]
+        
+    dao_chamadas:
+        class:        %dao.class.chamadas%
+        arguments:    [ @doctrine.orm.entity_manager ]
+    
+    dao_agencia:
+        class:        %dao.class.agencia%
+        arguments:    [ @doctrine.orm.entity_manager ]
+    
+    dao_convenio:
+        class:        %dao.class.convenio%
+        arguments:    [ @doctrine.orm.entity_manager ]
+        
+    rn_clientes:
+        class:        %rn.class.clientes%
+        arguments:    [ @dao_clientes ]
+        
+    rn_chamadas:
+        class:        %rn.class.chamadas%
+        arguments:    [ @dao_chamadas ]
+    
+    rn_agencia:
+        class:        %rn.class.agencia%
+        arguments:    [ @dao_agencia ]
+    
+    rn_convenio:
+        class:        %rn.class.convenio%
+        arguments:    [ @dao_convenio ]

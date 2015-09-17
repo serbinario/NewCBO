@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new SerBinario\MBCredito\NewCBOBundle\NewCBOBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
+            new SerBinario\MBCredito\CallCenterBundle\CallCenterBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

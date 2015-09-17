@@ -2,6 +2,7 @@ parameters:
     rn.class.arquivoCBF:            SerBinario\MBCredito\NewCBOBundle\RN\ArquivoCBFRN
     rn.class.CBF:                   SerBinario\MBCredito\NewCBOBundle\RN\CBFRN
     rn.class.transacoes:            SerBinario\MBCredito\NewCBOBundle\RN\TransacoesRN  
+    rn.class.operadores:            SerBinario\MBCredito\NewCBOBundle\RN\OperadoresRN
     dao.class.arquivoCabecalho:     SerBinario\MBCredito\NewCBOBundle\DAO\ArquivoCabecalhoDAO
     dao.class.arquivoCBF:           SerBinario\MBCredito\NewCBOBundle\DAO\ArquivoCBFDAO
     dao.class.transacoes:           SerBinario\MBCredito\NewCBOBundle\DAO\TransacoesDAO   
@@ -40,3 +41,7 @@ services:
     rn_transacoes:
         class:        %rn.class.transacoes%
         arguments:    [ @dao_transacoes ]
+    
+    operadores_rn:
+        class:  %rn.class.operadores%
+        arguments:  [ @dao_operadores ]
