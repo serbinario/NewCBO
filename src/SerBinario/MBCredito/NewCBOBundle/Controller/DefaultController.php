@@ -140,12 +140,12 @@ class DefaultController extends Controller
         
         if(!$dataInicial && !$dataFinal) {
             $this->get("session")->set("camposPesquisaCBO", null);
-            return $this->redirect($this->generateUrl("gridConsiguinacao"));
+            return $this->redirectToRoute("gridTransacoes");
         }
         
         if(!$dataInicial || !$dataFinal) {
             $this->addFlash("warning", "Você precisa informar tanto a data inicial quanto a final");
-            return $this->redirect($this->generateUrl("gridConsiguinacao"));
+            return $this->redirectToRoute("gridTransacoes");
         }
         
         if (!empty($dataInicial)) {
@@ -164,7 +164,7 @@ class DefaultController extends Controller
 
         $this->get("session")->set("camposPesquisaCBO", $camposPesquisa);
 
-        return $this->redirect($this->redirectToRoute("gridTransacoes"));
+        return $this->redirectToRoute("gridTransacoes");
     }
     
     
