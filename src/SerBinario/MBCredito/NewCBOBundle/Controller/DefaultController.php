@@ -14,6 +14,44 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class DefaultController extends Controller
 {
     /**
+     * @Route("/", name="login")
+     * @Template()
+     */
+    public function loginAction()
+    {
+        return array();
+    }
+    
+    /**
+     * @Route("/logar", name="logar")
+     * @Template()
+     */
+    public function logarAction(Request $request)
+    {
+        $dados = $request->request->all();
+        
+        $login = $dados['username'];
+        $senha = $dados['password'];
+        
+        if($login == "mbcredito" && $senha == "mbcredito") {
+            return $this->redirect($this->generateUrl("gridTransacoes"));
+        } else {
+            $this->addFlash("danger", "login ou senha inválidos");
+        }
+        
+        return $this->redirect($this->generateUrl("login"));
+    }
+    
+    /**
+     * @Route("/logout", name="logout")
+     * @Template()
+     */
+    public function logoutAction() {
+        return $this->redirect($this->generateUrl("login"));
+    }
+    
+    
+    /**
      * @Route("viewImportFile", name="viewImportFile")
      * @Template("")
      */
@@ -21,9 +59,13 @@ class DefaultController extends Controller
     {
         #Criando o formulário
         $form = $this->createForm(new ArquivoCBFType());
-
+        
         #Recuperando os serviços do container
-        $arquivoCBFRN = $this->get('rn_arquivoCBF');        
+        $arquivoCBFRN        = $this->get('rn_arquivoCBF'); 
+        $arquivoCabecalhoDAO = $this->get('dao_arquivoCabecalho');
+        
+        #Recupera os ultimos 15 arquivos 
+        $arquivosCabecalhos  = $arquivoCabecalhoDAO->findLastsDesc();
 
         #Verficando se é uma submissão
         if ($request->getMethod() === "POST") {
@@ -56,6 +98,7 @@ class DefaultController extends Controller
                 
                 #Processamento do arquivo, montando à arvore de objetos.
                 $arquivoCabecalho = ProcessamentoCBFUtil::processar($resultUpload->getImageName());
+                $arquivoCabecalho->setArquivoCBF($resultUpload);
                 
                 #Recuperando os serviços do container
                 $CBFRN  = $this->get('rn_CBF');

@@ -91,4 +91,25 @@ class ArquivoCabecalhoDAO
             return false;
         }
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function findLastsDesc()
+    {
+        try {
+            $arrayObj = $this->manager->createQueryBuilder()
+                            ->select("a")
+                            ->from("SerBinario\MBCredito\NewCBOBundle\Entity\ArquivoCabecalho", "a")
+                            ->orderBy("a.idArquivoCabecalho", "DESC")
+                            ->setMaxResults(15)
+                            ->getQuery()
+                            ->getResult();                            
+            
+            return $arrayObj;
+        } catch (\Exception $ex) {
+            return null;
+        }
+    }
 }

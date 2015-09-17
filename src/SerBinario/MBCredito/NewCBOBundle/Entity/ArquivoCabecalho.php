@@ -71,6 +71,16 @@ class ArquivoCabecalho
      */
     private $transacoes;
     
+    
+    /**
+     * @var ArquivoCBF
+     * @ORM\OneToOne(targetEntity="ArquivoCBF")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="arquivocbf_id_arquivocbf", referencedColumnName="id")
+     * })
+     */
+    private $arquivoCBF;
+    
     /**
      * 
      */
@@ -269,6 +279,24 @@ class ArquivoCabecalho
         return $this;
     }
 
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getArquivoCBF() 
+    {
+        return $this->arquivoCBF;
+    }
+    
+    /**
+     * 
+     * @param type $arquivoCBF
+     */
+    public function setArquivoCBF($arquivoCBF) 
+    {
+        $this->arquivoCBF = $arquivoCBF;
+    }
 
 
 
