@@ -61,4 +61,16 @@ class OperadoresRN
         
         return $result;
     }
+    
+    /**
+     * 
+     * @param type $chave
+     * @return boolean
+     */
+    public function findByChave($chave)
+    {
+        $result = $this->operadoresDAO->findByChave($chave);
+        
+        return $result;
+    }
 }

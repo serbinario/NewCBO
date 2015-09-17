@@ -140,10 +140,10 @@ class AgentesController extends Controller
     {        
         #Recuperando o serviço do container
         $operadoresRN = $this->get('operadores_rn');
-        $operador     = $operadoresRN->find($id);
+        $operador     = $operadoresRN->findByChave($id);
         
         #Criando o formulário
-        $form = $this->createForm(new OperadoresType(), $operador);
+        $form = $this->createForm(new OperadoresType(), $operador[0]);
         
         #Verficando se é uma submissão
         if ($request->getMethod() === "POST") {
@@ -166,10 +166,10 @@ class AgentesController extends Controller
                     $this->get('session')->getFlashBag()->add('danger', 'Erro ao cadastrado Dados');
                 }
                 
-                $operador = $operadoresRN->find($id);
+                $operador = $operadoresRN->findByChave($id);
                 
                 #Criando o formulário
-                $form = $this->createForm(new OperadoresType(), $operador);
+                $form = $this->createForm(new OperadoresType(), $operador[0]);
 
                 #Retorno
                 return array("form" => $form->createView());

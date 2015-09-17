@@ -15,14 +15,14 @@ class OperadoresType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('operadorChave', 'text', array(
+            ->add('codOperadores', 'text', array(
                 'label' => 'Chave J: ', 
                 'read_only' =>'true',
                 'attr'  => array(
                     'placeholder' => 'Chave J',
                     'widget_col'=> '4',
             )))
-            ->add('nomeOperador', 'text', array(
+            ->add('nomeOperadores', 'text', array(
                 'label' => 'Nome: ',           
                 'attr'  => array(
                     'placeholder' => 'Nome do Agente',
@@ -43,7 +43,7 @@ class OperadoresType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'SerBinario\MBCredito\CBOBundle\Entity\Operadores'
+            'data_class' => 'SerBinario\MBCredito\NewCBOBundle\Entity\Operadores'
         ));
     }
 
