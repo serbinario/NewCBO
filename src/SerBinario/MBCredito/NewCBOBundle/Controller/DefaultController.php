@@ -242,7 +242,7 @@ class DefaultController extends Controller
                 $valorTrocoCancelado = $transacaoRN->findByOperadorBetweenDateTrocoCancelado($resultCliente[$i]->getIdOperadores(), $dateIni, $dateFin);
                 
                 #Populando o array de retorno
-                $transacoesArray[$i]['bruto']   = ( (float) $valorBruto[1]) - ( (float) $valorCancelado[1] );    
+                $transacoesArray[$i]['bruto']   = $valorBruto[1];    
                 $transacoesArray[$i]['liquido'] = ( (float) $valorLiquido[1] ) + ( (float) $valorTrocoLiquido[1]);
                 
             }            

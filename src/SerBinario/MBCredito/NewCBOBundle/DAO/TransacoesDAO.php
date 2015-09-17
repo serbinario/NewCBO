@@ -140,19 +140,34 @@ class TransacoesDAO
             $qb = $this->manager->createQueryBuilder();
             $qb->select("sum(a.valorTransacoes)");
             $qb->from("SerBinario\MBCredito\NewCBOBundle\Entity\Transacoes", "a");
-            $qb->join("a.operadoresOperadores", "b");
+            $qb->join("a.operadoresOperadores", "b");    
+            $qb->leftJoin("a.transacoesTransacoes", "c");
             $qb->where("b.idOperadores = :idOperadores");
             $qb->andWhere("a.codTransacoes = '065'");            
-            $qb->setParameter("idOperadores", $idOperador);            
+            $qb->setParameter("idOperadores", $idOperador);   
+            
+            $qb2 = $this->manager->createQueryBuilder();
+            $qb2->select("a1.numeroPropostaTransacoes");
+            $qb2->from("SerBinario\MBCredito\NewCBOBundle\Entity\Transacoes", "a1");            
+            $qb2->join("a1.operadoresOperadores", "b1");
+            $qb2->where("b1.idOperadores = :idOperadores");
+            $qb2->andWhere("a1.codTransacoes='068'");   
+            $qb2->setParameter("idOperadores", $idOperador);            
    
-            if(!empty($dateIni) && !empty($dateFin)) {                
+            if(!empty($dateIni) && !empty($dateFin)) { 
+                $qb2->andWhere('a1.dataTransacoes BETWEEN :from AND :to');
+                $qb2->setParameter("from", $dateIni);
+                $qb2->setParameter("to", $dateFin);
+                
                 $qb->andWhere('a.dataTransacoes BETWEEN :from AND :to');
                 $qb->setParameter("from", $dateIni);
                 $qb->setParameter("to", $dateFin);
             }
             
+            $qb->andWhere($qb->expr()->in("a.numeroPropostaTransacoes", $qb2->getDQL()));
+          
             return $qb->getQuery()->getSingleResult();
-        } catch (\Exception $ex) {            
+        } catch (\Exception $ex) {          
             return null;
         }
     }
@@ -190,8 +205,7 @@ class TransacoesDAO
                 
                 $qb->andWhere('a.dataTransacoes BETWEEN :from AND :to');               
                 $qb->setParameter("from", $dateIni);
-                $qb->setParameter("to", $dateFin);
-                
+                $qb->setParameter("to", $dateFin);                
             }
            
             return $qb->getQuery()->getSingleResult();
