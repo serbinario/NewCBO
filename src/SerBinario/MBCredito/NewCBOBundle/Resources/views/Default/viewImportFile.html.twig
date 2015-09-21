@@ -37,13 +37,15 @@
                                     <th>Data do Arquivo</th>                                    
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        {% for arquivo in arquivos %}
+                                    
+                                    {% for arquivo in arquivos %}
+                                        <tr>
                                             <td>{{ arquivo.arquivoCBF.imageName }}</td>
                                             <td>{{ arquivo.arquivoCBF.updatedAt|date('d/m/Y') }}</td>
                                             <td>{{ arquivo.dataArquivoCabecalho|date('d/m/Y') }}</td>
-                                        {% endfor %}
-                                    </tr>>
+                                        </tr>
+                                    {% endfor %}
+                                    
                                 </tbody>
                                 <tfoot>
                                     <th>Nome do Arquivo</th>
