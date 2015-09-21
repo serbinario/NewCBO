@@ -102,6 +102,7 @@ class ArquivoCabecalhoDAO
             $arrayObj = $this->manager->createQueryBuilder()
                             ->select("a")
                             ->from("SerBinario\MBCredito\NewCBOBundle\Entity\ArquivoCabecalho", "a")
+                            ->join("a.arquivoCBF", "b")                            
                             ->orderBy("a.idArquivoCabecalho", "DESC")
                             ->setMaxResults(15)
                             ->getQuery()

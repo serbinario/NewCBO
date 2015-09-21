@@ -46,7 +46,8 @@ class DefaultController extends Controller
      * @Route("/logout", name="logout")
      * @Template()
      */
-    public function logoutAction() {
+    public function logoutAction() 
+    {
         return $this->redirect($this->generateUrl("login"));
     }
     
@@ -116,7 +117,7 @@ class DefaultController extends Controller
                 $form = $this->createForm(new ArquivoCBFType());
 
                 #Retorno
-                return array("form" => $form->createView());
+                return array("form" => $form->createView(), "arquivos" => $arquivosCabecalhos);
             } else {
                 #Messagem de retorno
                 $this->get('session')->getFlashBag()->add('danger', (string) $form->getErrors());
@@ -124,7 +125,7 @@ class DefaultController extends Controller
         }
 
         #Retorno
-        return array("form" => $form->createView());
+        return array("form" => $form->createView(), "arquivos" => $arquivosCabecalhos);
     }
     
     /**
@@ -216,9 +217,12 @@ class DefaultController extends Controller
                     $whereFull
                     );
 
-            $resultCliente  = $gridClass->builderQuery();            
-            $countTotal     = $gridClass->getCount();
-            $countEventos   = count($resultCliente);
+            $resultCliente   = $gridClass->builderQuery();            
+            $countTotal      = $gridClass->getCount();
+            $countEventos    = count($resultCliente);        
+            $OperadoresId    = array();
+            $valorTotalBru   = 0;
+            $valorTotalLiq   = 0;
             
             for($i=0;$i < $countEventos; $i++)
             {   
@@ -227,12 +231,15 @@ class DefaultController extends Controller
                 $bruto   = 0;
                 $canceladoLiquido = 0;
                 
+                #Recuperando o id do operador e alimentando o array
+                $OperadoresId[$i] = $resultCliente[$i]->getIdOperadores();
+                
                 #Populando o array de retorno
                 $transacoesArray[$i]['DT_RowId'] = $resultCliente[$i]->getIdOperadores();    
                 $transacoesArray[$i]['nome']     = $resultCliente[$i]->getNomeOperadores();
                 $transacoesArray[$i]['chave']    = $resultCliente[$i]->getCodOperadores();
                 
-                $dateIni = isset($whereCamposPesquisa['dateIn']) ? $whereCamposPesquisa['dateIn'] : "";
+                $dateIni = isset($whereCamposPesquisa['dateIn'])  ? $whereCamposPesquisa['dateIn']  : "";
                 $dateFin = isset($whereCamposPesquisa['dateFin']) ? $whereCamposPesquisa['dateFin'] : "";
                 
                 $valorBruto          = $transacaoRN->findByOperadorBetweenDateBruto($resultCliente[$i]->getIdOperadores(), $dateIni, $dateFin);
@@ -242,21 +249,58 @@ class DefaultController extends Controller
                 $valorTrocoCancelado = $transacaoRN->findByOperadorBetweenDateTrocoCancelado($resultCliente[$i]->getIdOperadores(), $dateIni, $dateFin);
                 
                 #Populando o array de retorno
-                $transacoesArray[$i]['bruto']   = $valorBruto[1];    
-                $transacoesArray[$i]['liquido'] = ( (float) $valorLiquido[1] ) + ( (float) $valorTrocoLiquido[1]);
+                $transacoesArray[$i]['bruto']   = number_format($valorBruto[1], 2, ',', '.'); 
+                $transacoesArray[$i]['liquido'] = number_format(( (float) $valorLiquido[1] ) + ( (float) $valorTrocoLiquido[1]), 2, ',', '.');;
                 
-            }            
-
+            }   
+            
+            #Totais Gerais
+            $valorTotalBru   = $transacaoRN->findTotalDateBruto($dateIni, $dateFin);
+            $valorTotalLiq   = $transacaoRN->findTotalDateLiquido($dateIni, $dateFin);
+            $valorTotalTro   = $transacaoRN->findTotalnDateTrocoLiquido($dateIni, $dateFin);
+            
+            #Totais liquidos e brutos dos estados
+            $valorTotalBruPe = $transacaoRN->findByOperadoresByEstadoBetweenDateBruto(1000, $dateIni, $dateFin);
+            $valorTotalLiqPe = $transacaoRN->findByOperadoresByEstadoBetweenDateLiquido(1000, $dateIni, $dateFin);
+            $valorTotalTroPe = $transacaoRN->findByOperadoresByEstadoBetweenDateTrocoLiquido(1000, $dateIni, $dateFin);
+            
+            #Totais liquidos e brutos dos estados
+            $valorTotalBruBa = $transacaoRN->findByOperadoresByEstadoBetweenDateBruto(1002, $dateIni, $dateFin);            
+            $valorTotalLiqBa = $transacaoRN->findByOperadoresByEstadoBetweenDateLiquido(1002, $dateIni, $dateFin);
+            $valorTotalTroBa = $transacaoRN->findByOperadoresByEstadoBetweenDateTrocoLiquido(1002, $dateIni, $dateFin);
+            
+            #Totais liquidos e brutos dos estados
+            $valorTotalBruMg = $transacaoRN->findByOperadoresByEstadoBetweenDateBruto(1003, $dateIni, $dateFin);
+            $valorTotalLiqMg = $transacaoRN->findByOperadoresByEstadoBetweenDateLiquido(1003, $dateIni, $dateFin);
+            $valorTotalTroMg = $transacaoRN->findByOperadoresByEstadoBetweenDateTrocoLiquido(1003, $dateIni, $dateFin);
+            
+            #Totais liquidos e brutos dos estados
+            $valorTotalBruAl = $transacaoRN->findByOperadoresByEstadoBetweenDateBruto(1001, $dateIni, $dateFin);
+            $valorTotalLiqAL = $transacaoRN->findByOperadoresByEstadoBetweenDateLiquido(1001, $dateIni, $dateFin);
+            $valorTotalTroAl = $transacaoRN->findByOperadoresByEstadoBetweenDateTrocoLiquido(1001, $dateIni, $dateFin);
+           //var_dump($valorTotalBruPe);exit;
             //Se a variável $sqlFilter estiver vazio
             if(!$gridClass->isFilter()){
                 $countEventos = $countTotal;
             }
-
+            
             $columns = array(               
                 'draw'              => $parametros['draw'],
                 'recordsTotal'      => "{$countTotal}",
                 'recordsFiltered'   => "{$countEventos}",
-                'data'              => $transacoesArray               
+                'data'              => $transacoesArray,
+                'somatorios'        =>array(
+                    "somaTotalBruto"   => number_format($valorTotalBru[1], 2, ',', ' '),
+                    "somaTotalLiquido" => number_format($valorTotalLiq[1] + $valorTotalTro[1], 2, ',', ' '),
+                    "somaPeBruto"      => number_format($valorTotalBruPe[1], 2, ',', ' '),
+                    "somaPeLiquido"    => number_format($valorTotalLiqPe[1] + $valorTotalTroPe[1], 2, ',', ' '),
+                    "somaAlBruto"      => number_format($valorTotalBruAl[1], 2, ',', ' '),
+                    "somaAlLiquido"    => number_format($valorTotalLiqAL[1] + $valorTotalTroAl[1], 2, ',', ' '),
+                    "somaBaBruto"      => number_format($valorTotalBruBa[1], 2, ',', ' '),
+                    "somaBaLiquido"    => number_format($valorTotalLiqBa[1] + $valorTotalTroBa[1], 2, ',', ' '),
+                    "somaMgBruto"      => number_format($valorTotalBruMg[1], 2, ',', ' '),
+                    "somaMgLiquido"    => number_format($valorTotalLiqMg[1] + $valorTotalTroMg[1], 2, ',', ' ')                    
+                )
             );
 
             return new JsonResponse($columns);

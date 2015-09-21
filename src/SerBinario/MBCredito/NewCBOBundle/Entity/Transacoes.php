@@ -207,7 +207,7 @@ class Transacoes
     /**
      * @var \Lojas
      *
-     * @ORM\ManyToOne(targetEntity="Lojas")
+     * @ORM\ManyToOne(targetEntity="Lojas", inversedBy="transacoes")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="lojas_id_lojas", referencedColumnName="id_lojas")
      * })

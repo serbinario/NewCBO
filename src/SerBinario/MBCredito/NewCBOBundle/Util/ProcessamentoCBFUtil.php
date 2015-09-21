@@ -79,7 +79,7 @@ class ProcessamentoCBFUtil
                $transacoes->setValorTransacoes(substr($line, 45,15) .".".substr($line, 60,2));   
                
                #Lojas
-               $lojas->setCodigoLojas(substr($line, 63,4));
+               $lojas->setCodigoLojas(substr($line, 62,4));
                $transacoes->setLojasLojas($lojas);
                ###################################################
                

@@ -34,6 +34,13 @@ class Lojas
      * @ORM\Column(name="uf_lojas", type="string", length=5, nullable=true)
      */
     private $ufLojas;
+    
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Transacoes", mappedBy="lojasLojas")
+     */
+    private $transacoes;
 
 
 
@@ -91,5 +98,15 @@ class Lojas
     public function getUfLojas()
     {
         return $this->ufLojas;
+    }
+    
+    /**
+     * Get transacoes
+     *
+     * @return  \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getTransacoes() 
+    {
+        return $this->transacoes;
     }
 }
