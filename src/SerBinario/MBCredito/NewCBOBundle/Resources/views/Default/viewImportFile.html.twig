@@ -25,6 +25,36 @@
                     </fieldset>
                 </div>
             </div>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <fieldset>
+                        <legend>Últimos Arquivos Importados</legend>                           
+                        <div class="col-md-13 column">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <th>Nome do Arquivo</th>
+                                    <th>Data da Importação</th>
+                                    <th>Data do Arquivo</th>                                    
+                                </thead>
+                                <tbody>
+                                    {% for arquivo in arquivos %}
+                                        <tr>{{ arquivo.arquivoCBF.imageName }}</tr>
+                                        <tr>{{ arquivo.arquivoCBF.updatedAt|date('d/m/Y') }}</tr>
+                                        <tr>{{ arquivo.dataArquivoCabecalho|date('d/m/Y') }}</tr>
+                                    {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <th>Nome do Arquivo</th>
+                                    <th>Data da Importação</th>
+                                    <th>Data do Arquivo</th>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+                        
         </div>
     </div>
 {% endblock %}

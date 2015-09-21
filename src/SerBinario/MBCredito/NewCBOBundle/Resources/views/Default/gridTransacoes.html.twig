@@ -36,6 +36,7 @@
             height: 22px;
             margin: 0 10px;
         }
+        
     </style>
 
 {% endblock %}
@@ -118,10 +119,50 @@
                         </table>
                     </section>
                 </div>
-            </fieldset> 
-           
+            </fieldset>           
         </div>
-    </div>
+        <br><br>
+        <div class="row clearfix">
+            <fieldset>
+                <legend>Totais Gerais</legend>
+                <div class="col-md-4 column">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">TOTAIS DO BRUTO POR ESTADO</div>
+                        <div class="panel-body">
+                            <div id="peBruto"></div>
+                            <div id="alBruto"></div>
+                            <div id="baBruto"></div>
+                            <div id="mgBruto"></div>
+                        </div>                
+                    </div>
+                </div>
+
+                <div class="col-md-4 column">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">TOTAIS DO LÍQUIDO POR ESTADO</div>
+                        <div class="panel-body">
+                            <div id="peLiquido"></div>
+                            <div id="alLiquido"></div>
+                            <div id="baLiquido"></div>
+                            <div id="mgLiquido"></div>
+                        </div>                
+                    </div>
+                </div>
+
+                <div class="col-md-4 column">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">TOTAIS GERAIS</div>
+                        <div class="panel-body">
+                            <div id="bruto"></div>
+                            <div id="liquido"></div>                        
+                        </div>                
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        
+                             
+    
 {% endblock %}
 
 {% block javascripts %}
@@ -185,7 +226,18 @@
                         });
 
                         dt.on('xhr', function () {
-                            var json = dt.ajax.json();
+                            var json = dt.ajax.json();            
+
+                            $("#peLiquido").text("PERNAMBUCO : " + $("#peLiquido").text() + " " + json.somatorios.somaPeLiquido);
+                            $("#peBruto").text("PERNAMBUCO : " + $("#peBruto").text() + " " + json.somatorios.somaPeBruto);
+                            $("#alLiquido").text("ALAGOAS : " + $("#alLiquido").text() + " " + json.somatorios.somaAlLiquido);
+                            $("#alBruto").text("ALAGOAS : " + $("#alBruto").text() + " " + json.somatorios.somaAlBruto);
+                            $("#baLiquido").text("BAHIA : " + $("#baLiquido").text() + " " + json.somatorios.somaBaLiquido);
+                            $("#baBruto").text("BAHIA : " + $("#baBruto").text() + " " + json.somatorios.somaBaBruto);
+                            $("#mgLiquido").text("MINAS : " + $("#mgLiquido").text() + " " + json.somatorios.somaMgLiquido);
+                            $("#mgBruto").text("MINAS : " + $("#mgBruto").text() + " " + json.somatorios.somaMgBruto);
+                            $("#bruto").text("LÍQUIDO : " + $("#bruto").text() + " " + json.somatorios.somaTotalLiquido);
+                            $("#liquido").text("BRUTO : " + $("#liquido").text() + " " + json.somatorios.somaTotalBruto);                            
                         });
 
                         // Array to track the ids of the details displayed rows
