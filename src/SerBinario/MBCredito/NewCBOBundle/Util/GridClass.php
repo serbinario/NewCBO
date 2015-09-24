@@ -237,9 +237,9 @@ class GridClass
             $query  = $this->em->createQuery("SELECT distinct a FROM {$this->entity} a"
                         . " {$sqlJoin} "
                         . " {$dqlWhere} "                      
-                        . "ORDER BY {$dqlOrder}")
-                        ->setFirstResult($dqlStart)
-                        ->setMaxResults($dqlLength);
+                        . "ORDER BY {$dqlOrder}");
+                        //->setFirstResult($dqlStart)
+                        //->setMaxResults($dqlLength);
            
             if($whereGlobal) {
                 $query->setParameter(1,strtoupper("%{$dqlFilter}%"));
@@ -254,7 +254,7 @@ class GridClass
             
             return $result;
         } catch (Exception $ex) {
-            print_r($ex);
+            return null;
         }
     
     }

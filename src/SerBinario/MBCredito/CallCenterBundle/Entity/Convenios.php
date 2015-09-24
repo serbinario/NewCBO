@@ -59,4 +59,13 @@ class Convenios
     {
         return $this->convenio;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function __toString() 
+    {
+        return $this->getConvenio();
+    }
 }

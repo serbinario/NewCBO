@@ -51,6 +51,14 @@ class Chamadas
      */
     private $statusChamada;
     
+     /**
+     *
+     * @var integer
+     * 
+     * @ORM\Column(name="codigo_transacao", type="integer", nullable=true)
+     */
+    private $codigoTransacao;
+    
     /**
      * @var SerBinario\MBCredito\CallCenterBundle\Entity\Clientes
      * 
@@ -257,5 +265,23 @@ class Chamadas
     public function getConvenio()
     {
         return $this->convenio;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getCodigoTransacao() 
+    {
+        return $this->codigoTransacao;
+    }
+    
+    /**
+     * 
+     * @param type $codigoTransacao
+     */
+    public function setCodigoTransacao($codigoTransacao) 
+    {
+        $this->codigoTransacao = $codigoTransacao;
     }
 }
