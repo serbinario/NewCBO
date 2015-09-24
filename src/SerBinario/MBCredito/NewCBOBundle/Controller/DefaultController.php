@@ -151,12 +151,14 @@ class DefaultController extends Controller
         
         if (!empty($dataInicial)) {
             $dataInicial = implode("-", array_reverse(explode("/", $dataInicial)));
-            $dataInicial = \DateTime::createFromFormat("Y-m-d", $dataInicial);
+            $dataInicial = \DateTime::createFromFormat("Y-m-d", $dataInicial);  
+            $dataInicial->setTime(0,0,0);
         }
 
         if (!empty($dataFinal)) {
             $dataFinal = implode("-", array_reverse(explode("/", $dataFinal)));
             $dataFinal = \DateTime::createFromFormat("Y-m-d", $dataFinal);
+            $dataFinal->setTime(0,0,0);
         }
 
         $camposPesquisa = array(
@@ -192,8 +194,8 @@ class DefaultController extends Controller
                 foreach ($camposPesquisaCBO as $chave => $valor) {
                     if (!empty($valor)) {
                         if ($chave === "periodo") {
-                            $whereCamposPesquisa['dateIn']  = $valor[0]->format("Y-m-d");
-                            $whereCamposPesquisa['dateFin'] = $valor[1]->format("Y-m-d");                        
+                            $whereCamposPesquisa['dataIn'] = $valor[0];
+                            $whereCamposPesquisa['dataFi'] = $valor[1];                      
                         }
                     }
                 }
@@ -204,8 +206,8 @@ class DefaultController extends Controller
             $parametros       = $request->request->all();       
             $entity           = "SerBinario\MBCredito\NewCBOBundle\Entity\Operadores"; 
             $columnWhereMain  = "";
-            $whereValueMain   = "";
-            $whereFull        = "";
+            $whereValueMain   = "";            
+            $whereFull        = "" ;
             
             $gridClass = new GridClass($this->getDoctrine()->getManager(), 
                     $parametros,
@@ -215,70 +217,78 @@ class DefaultController extends Controller
                     $columnWhereMain,
                     $whereValueMain,
                     $whereFull
-                    );
-
+                    );            
+         
             $resultCliente   = $gridClass->builderQuery();            
             $countTotal      = $gridClass->getCount();
-            $countEventos    = count($resultCliente);        
-            $OperadoresId    = array();
-            $valorTotalBru   = 0;
-            $valorTotalLiq   = 0;
+            $countEventos    = count($resultCliente);          
             
+            #Variáveis de soma global
+            $valorTotalBruto     = 0.0;
+            $valorTotalLiquido   = 0.0;
+            $valorTotalPeBruto   = 0.0;
+            $valorTotalPeLiquido = 0.0;
+            $valorTotalAlBruto   = 0.0;
+            $valorTotalAlLiquido = 0.0;
+            $valorTotalBaBruto   = 0.0;
+            $valorTotalBaLiquido = 0.0;
+            $valorTotalMgBruto   = 0.0;
+            $valorTotalMgLiquido = 0.0;
+           
             for($i=0;$i < $countEventos; $i++)
-            {   
-                #Variaveis de somatorio
-                $liquido = 0;
-                $bruto   = 0;
-                $canceladoLiquido = 0;
+            {          
+                #Variáveis de soma local
+                $totalLiquido     = 0.0;
+                $totalBruto       = 0.0;
+                $canceladoLiquido = 0.0;         
                 
                 #Recuperando o id do operador e alimentando o array
                 $OperadoresId[$i] = $resultCliente[$i]->getIdOperadores();
                 
                 #Populando o array de retorno
-                $transacoesArray[$i]['DT_RowId'] = $resultCliente[$i]->getIdOperadores();    
+                $transacoesArray[$i]['DT_RowId'] = "row_".$resultCliente[$i]->getIdOperadores();    
                 $transacoesArray[$i]['nome']     = $resultCliente[$i]->getNomeOperadores();
                 $transacoesArray[$i]['chave']    = $resultCliente[$i]->getCodOperadores();
                 
-                $dateIni = isset($whereCamposPesquisa['dateIn'])  ? $whereCamposPesquisa['dateIn']  : "";
-                $dateFin = isset($whereCamposPesquisa['dateFin']) ? $whereCamposPesquisa['dateFin'] : "";
+                $transacoes = $transacaoRN->findByCodTransacao("065", $resultCliente[$i]->getIdOperadores(), $whereCamposPesquisa);
                 
-                $valorBruto          = $transacaoRN->findByOperadorBetweenDateBruto($resultCliente[$i]->getIdOperadores(), $dateIni, $dateFin);
-                $valorLiquido        = $transacaoRN->findByOperadorBetweenDateLiquido($resultCliente[$i]->getIdOperadores(), $dateIni, $dateFin);
-                $valorTrocoLiquido   = $transacaoRN->findByOperadorBetweenDateTrocoLiquido($resultCliente[$i]->getIdOperadores(), $dateIni, $dateFin);
-                $valorCancelado      = $transacaoRN->findByOperadorBetweenDateCancelado($resultCliente[$i]->getIdOperadores(), $dateIni, $dateFin);
-                $valorTrocoCancelado = $transacaoRN->findByOperadorBetweenDateTrocoCancelado($resultCliente[$i]->getIdOperadores(), $dateIni, $dateFin);
+                foreach ($transacoes as $transacao) {                   
+                    $respotaliquida = $transacaoRN->findByCodOperacao($transacao->getNumeroPropostaTransacoes(), "068", $whereCamposPesquisa);
+                    
+                    if($respotaliquida) {
+                        $totalLiquido += $respotaliquida->getValorTrocoTransacoes() != 0 ? $respotaliquida->getValorTrocoTransacoes() : $respotaliquida->getValorTransacoes();
+                        $totalBruto   += $transacao->getValorTransacoes();
+                    }
+                }
+                
+                #Totais Gerais
+                $valorTotalBruto   += $totalBruto;
+                $valorTotalLiquido += $totalLiquido;
                 
                 #Populando o array de retorno
-                $transacoesArray[$i]['bruto']   = number_format($valorBruto[1], 2, ',', '.'); 
-                $transacoesArray[$i]['liquido'] = number_format(( (float) $valorLiquido[1] ) + ( (float) $valorTrocoLiquido[1]), 2, ',', '.');;
+                $transacoesArray[$i]['bruto']   = $totalBruto;
+                $transacoesArray[$i]['liquido'] = $totalLiquido;                
+            }
+            
+            #Ordenando o array de retorno
+            $objArray = new \ArrayObject($transacoesArray);
+            $objArray->uasort(function($valorUm, $valorDois) {
+                if ($valorUm['liquido'] == $valorDois['liquido']) {
+                    return 0;
+                }
                 
-            }   
+                return ($valorUm['liquido'] > $valorDois['liquido']) ? -1 : 1;
+            });
+          
+            #Polulando o array ordenado
+            $count = 0;
+            foreach($objArray->getIterator() as $obj) {
+                $transacoesArray[$count] = $obj;
+                $transacoesArray[$count]['bruto'] = number_format($transacoesArray[$count]['bruto'], 2, ',', ' ');
+                $transacoesArray[$count]['liquido'] = number_format($transacoesArray[$count]['liquido'], 2, ',', ' ');
+                $count++;
+            }            
             
-            #Totais Gerais
-            $valorTotalBru   = $transacaoRN->findTotalDateBruto($dateIni, $dateFin);
-            $valorTotalLiq   = $transacaoRN->findTotalDateLiquido($dateIni, $dateFin);
-            $valorTotalTro   = $transacaoRN->findTotalnDateTrocoLiquido($dateIni, $dateFin);
-            
-            #Totais liquidos e brutos dos estados
-            $valorTotalBruPe = $transacaoRN->findByOperadoresByEstadoBetweenDateBruto(1000, $dateIni, $dateFin);
-            $valorTotalLiqPe = $transacaoRN->findByOperadoresByEstadoBetweenDateLiquido(1000, $dateIni, $dateFin);
-            $valorTotalTroPe = $transacaoRN->findByOperadoresByEstadoBetweenDateTrocoLiquido(1000, $dateIni, $dateFin);
-            
-            #Totais liquidos e brutos dos estados
-            $valorTotalBruBa = $transacaoRN->findByOperadoresByEstadoBetweenDateBruto(1002, $dateIni, $dateFin);            
-            $valorTotalLiqBa = $transacaoRN->findByOperadoresByEstadoBetweenDateLiquido(1002, $dateIni, $dateFin);
-            $valorTotalTroBa = $transacaoRN->findByOperadoresByEstadoBetweenDateTrocoLiquido(1002, $dateIni, $dateFin);
-            
-            #Totais liquidos e brutos dos estados
-            $valorTotalBruMg = $transacaoRN->findByOperadoresByEstadoBetweenDateBruto(1003, $dateIni, $dateFin);
-            $valorTotalLiqMg = $transacaoRN->findByOperadoresByEstadoBetweenDateLiquido(1003, $dateIni, $dateFin);
-            $valorTotalTroMg = $transacaoRN->findByOperadoresByEstadoBetweenDateTrocoLiquido(1003, $dateIni, $dateFin);
-            
-            #Totais liquidos e brutos dos estados
-            $valorTotalBruAl = $transacaoRN->findByOperadoresByEstadoBetweenDateBruto(1001, $dateIni, $dateFin);
-            $valorTotalLiqAL = $transacaoRN->findByOperadoresByEstadoBetweenDateLiquido(1001, $dateIni, $dateFin);
-            $valorTotalTroAl = $transacaoRN->findByOperadoresByEstadoBetweenDateTrocoLiquido(1001, $dateIni, $dateFin);
-           //var_dump($valorTotalBruPe);exit;
             //Se a variável $sqlFilter estiver vazio
             if(!$gridClass->isFilter()){
                 $countEventos = $countTotal;
@@ -290,17 +300,17 @@ class DefaultController extends Controller
                 'recordsFiltered'   => "{$countEventos}",
                 'data'              => $transacoesArray,
                 'somatorios'        =>array(
-                    "somaTotalBruto"   => number_format($valorTotalBru[1], 2, ',', ' '),
-                    "somaTotalLiquido" => number_format($valorTotalLiq[1] + $valorTotalTro[1], 2, ',', ' '),
-                    "somaPeBruto"      => number_format($valorTotalBruPe[1], 2, ',', ' '),
-                    "somaPeLiquido"    => number_format($valorTotalLiqPe[1] + $valorTotalTroPe[1], 2, ',', ' '),
-                    "somaAlBruto"      => number_format($valorTotalBruAl[1], 2, ',', ' '),
-                    "somaAlLiquido"    => number_format($valorTotalLiqAL[1] + $valorTotalTroAl[1], 2, ',', ' '),
-                    "somaBaBruto"      => number_format($valorTotalBruBa[1], 2, ',', ' '),
-                    "somaBaLiquido"    => number_format($valorTotalLiqBa[1] + $valorTotalTroBa[1], 2, ',', ' '),
-                    "somaMgBruto"      => number_format($valorTotalBruMg[1], 2, ',', ' '),
-                    "somaMgLiquido"    => number_format($valorTotalLiqMg[1] + $valorTotalTroMg[1], 2, ',', ' ')                    
-                )
+                  "somaTotalBruto"   => number_format($valorTotalBruto, 2, ',', ' '),
+                  "somaTotalLiquido" => number_format($valorTotalLiquido, 2, ',', ' '),
+                  "somaPeBruto"      => number_format($valorTotalPeBruto, 2, ',', ' '),
+                  "somaPeLiquido"    => number_format($valorTotalPeLiquido, 2, ',', ' '),
+                  "somaAlBruto"      => number_format($valorTotalAlBruto, 2, ',', ' '),
+                  "somaAlLiquido"    => number_format($valorTotalAlLiquido, 2, ',', ' '),
+                  "somaBaBruto"      => number_format($valorTotalBaBruto, 2, ',', ' '),
+                  "somaBaLiquido"    => number_format($valorTotalBaLiquido, 2, ',', ' '),
+                  "somaMgBruto"      => number_format($valorTotalMgBruto, 2, ',', ' '),
+                  "somaMgLiquido"    => number_format($valorTotalMgLiquido, 2, ',', ' ')                    
+               )
             );
 
             return new JsonResponse($columns);

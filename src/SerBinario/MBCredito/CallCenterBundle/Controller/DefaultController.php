@@ -56,7 +56,7 @@ class DefaultController extends Controller
                 $chamadasArray[$i]['nome']     = $resultCliente[$i]->getNome();
                 $chamadasArray[$i]['cpf']      = $resultCliente[$i]->getCpf();
                 $chamadasArray[$i]['conta']    = $resultCliente[$i]->getConta();
-                $chamadasArray[$i]['agencia']  = $resultCliente[$i]->getAgencia();                                
+                $chamadasArray[$i]['agencia']  = $resultCliente[$i]->getAgencia()->getNumeroAgencia();                                
                 
                 $chamadas      = $resultCliente[$i]->getChamadas()->toArray();             
                 $arrayChamadas = array();

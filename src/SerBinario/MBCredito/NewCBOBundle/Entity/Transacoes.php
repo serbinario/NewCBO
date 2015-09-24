@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Transacoes
  *
- * @ORM\Table(name="transacoes", indexes={@ORM\Index(name="fk_transacoes_operadores_idx", columns={"operadores_id_operadores"}), @ORM\Index(name="fk_transacoes_arquivo_cabecalho1_idx", columns={"arquivo_cabecalho_id_arquivo_cabecalho"}), @ORM\Index(name="fk_transacoes_transacoes1_idx", columns={"transacoes_id_transacoes"}), @ORM\Index(name="fk_transacoes_lojas1_idx", columns={"lojas_id_lojas"})})
+ * @ORM\Table(name="transacoes", indexes={@ORM\Index(name="fk_transacoes_operadores_idx", columns={"operadores_id_operadores"}), @ORM\Index(name="fk_transacoes_arquivo_cabecalho1_idx", columns={"arquivo_cabecalho_id_arquivo_cabecalho"}), @ORM\Index(name="fk_transacoes_lojas1_idx", columns={"lojas_id_lojas"})})
  * @ORM\Entity
  */
 class Transacoes
@@ -193,16 +193,7 @@ class Transacoes
      *   @ORM\JoinColumn(name="arquivo_cabecalho_id_arquivo_cabecalho", referencedColumnName="id_arquivo_cabecalho")
      * })
      */
-    private $arquivoCabecalhoArquivoCabecalho;
-
-    /**
-     * @var \Transacoes 
-     * @ORM\OneToOne(targetEntity="Transacoes")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="transacoes_id_transacoes", referencedColumnName="id_transacoes")
-     * })
-     */
-    private $transacoesTransacoes;
+    private $arquivoCabecalhoArquivoCabecalho;    
 
     /**
      * @var \Lojas
@@ -796,28 +787,7 @@ class Transacoes
         return $this->arquivoCabecalhoArquivoCabecalho;
     }
 
-    /**
-     * Set transacoesTransacoes
-     *
-     * @param \SerBinario\MBCredito\NewCBOBundle\Entity\Transacoes $transacoesTransacoes
-     * @return Transacoes
-     */
-    public function setTransacoesTransacoes(\SerBinario\MBCredito\NewCBOBundle\Entity\Transacoes $transacoesTransacoes)
-    {
-        $this->transacoesTransacoes = $transacoesTransacoes;
-
-        return $this;
-    }
-
-    /**
-     * Get transacoesTransacoes
-     *
-     * @return \SerBinario\MBCredito\NewCBOBundle\Entity\Transacoes 
-     */
-    public function getTransacoesTransacoes()
-    {
-        return $this->transacoesTransacoes;
-    }
+    
 
     /**
      * Set lojasLojas

@@ -29,7 +29,16 @@ class ChamadasType extends AbstractType
                     'attr'  => array(                        
                         'widget_col'=> '4',                        
                     )                    
-                ))           
+                ))     
+            ->add('codigoTransacao', 'text', array(                    
+                    'required'     => true,
+                    'label' => 'Codigo da Operação: ', 
+                    'attr'  => array(                        
+                        'widget_col'=> '4', 
+                        'placeholder' => 'Codigo da Operação',
+                        "class"    => "mask_numero"
+                    )                    
+                ))
             ->add('valorContratado', 'text', array(
                 'label' => 'Valor do Contrato: ',
                 'required'     => true,

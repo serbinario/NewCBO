@@ -90,4 +90,13 @@ class Agencias
     {
         return $this->nomeAgencia;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function __toString() 
+    {
+       return $this->getNumeroAgencia() . " : " . $this->getNomeAgencia();
+    }
 }

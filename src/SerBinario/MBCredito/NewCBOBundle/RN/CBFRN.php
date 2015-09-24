@@ -86,18 +86,18 @@ class CBFRN
                 $operador    = $transacao->getOperadoresOperadores();
                 $loja        = $transacao->getLojasLojas();           
 
-                #Recuperando o código da transação
-                $codOperacao = $transacao->getNumeroPropostaTransacoes();
+//                #Recuperando o código da transação
+//                $codOperacao = $transacao->getNumeroPropostaTransacoes();
                 
-                #Recuperando o objeto da mesma operação do objeto corrente
-                $arrayObjTransVinculado = new \ArrayObject($this->cboTransacoes->findByCodOperacao($codOperacao));
-
-                #Se existir uma transação com mesmo código da operação vincula a transação corrente
-                if($arrayObjTransVinculado->count() > 0) {   
-                    $objTransVinculado = $arrayObjTransVinculado->offsetGet(0);
-                    $objTransVinculado->setTransacoesTransacoes($transacao);
-                    //$transacao->setTransacoesTransacoes($objTransVinculado);
-                }
+//                #Recuperando o objeto da mesma operação do objeto corrente
+//                $arrayObjTransVinculado = new \ArrayObject($this->cboTransacoes->findByCodOperacao($codOperacao));
+//
+//                #Se existir uma transação com mesmo código da operação vincula a transação corrente
+//                if($arrayObjTransVinculado->count() > 0) {   
+//                    $objTransVinculado = $arrayObjTransVinculado->offsetGet(0);
+//                    $objTransVinculado->setTransacoesTransacoes($transacao);
+//                    //$transacao->setTransacoesTransacoes($objTransVinculado);
+//                }
 
                 #Tratamento Operador
                 $transacao->setOperadoresOperadores($this->tratamentoOperadores($operador));

@@ -30,166 +30,21 @@ class TransacoesRN
      * @param type $codigo
      * @return boolean
      */
-    public function findByCodTransacao($codigo, $data = array(), $operador = "")
+    public function findByCodTransacao($codigo, $operador, $data = array())
     {
-        $result = $this->dao->findByCodTransacao($codigo);
+        $result = $this->dao->findByCodTransacao($codigo, $data, $operador);
         
         return $result;
     }
     
     /**
      * 
-     * @param type $idOperador
-     * @param type $dateIni
-     * @param type $dateFin
-     * @return type
+     * @param type $codOperacao
+     * @return boolean
      */
-    public function findByOperadorBetweenDateBruto($idOperador, $dateIni = "", $dateFin = "")
+    public function findByCodOperacao($codOperacao, $codigoTransacao, $data = array())
     {
-        $result = $this->dao->findByOperadorBetweenDateBruto($idOperador, $dateIni, $dateFin);
-        
-        return $result;
-    }  
-    
-   /**
-    * 
-    * @param type $idOperador
-    * @param type $estado
-    * @param type $dateIni
-    * @param type $dateFin
-    * @return type
-    */
-    public function findByOperadoresByEstadoBetweenDateBruto($estado, $dateIni = "", $dateFin = "")
-    {
-        $result = $this->dao->findByOperadoresByEstadoBetweenDateBruto($estado, $dateIni, $dateFin);
-        
-        return $result;
-    }      
-    
-    
-     /**
-     * 
-     * @param type $idOperador
-     * @param type $dateIni
-     * @param type $dateFin
-     * @return type
-     */
-    public function findByOperadorBetweenDateLiquido($idOperador, $dateIni = "", $dateFin = "")
-    {
-        $result = $this->dao->findByOperadorBetweenDateLiquido($idOperador, $dateIni, $dateFin);
-        
-        return $result;
-    } 
-    
-    /**
-    * 
-    * @param type $idOperador
-    * @param type $estado
-    * @param type $dateIni
-    * @param type $dateFin
-    * @return type
-    */
-    public function findByOperadoresByEstadoBetweenDateLiquido($estado, $dateIni = "", $dateFin = "")
-    {
-        $result = $this->dao->findByOperadoresByEstadoBetweenDateLiquido($estado, $dateIni, $dateFin);
-        
-        return $result;
-    }
-    
-    
-    
-    /**
-     * 
-     * @param type $idOperador
-     * @param type $dateIni
-     * @param type $dateFin
-     * @return type
-     */
-    public function findByOperadorBetweenDateTrocoLiquido($idOperador, $dateIni = "", $dateFin = "")
-    {
-        $result = $this->dao->findByOperadorBetweenDateTrocoLiquido($idOperador, $dateIni, $dateFin);
-        
-        return $result;
-    } 
-    
-    /**
-    * 
-    * @param type $idOperador
-    * @param type $estado
-    * @param type $dateIni
-    * @param type $dateFin
-    * @return type
-    */
-    public function findByOperadoresByEstadoBetweenDateTrocoLiquido($estado, $dateIni = "", $dateFin = "")
-    {
-        $result = $this->dao->findByOperadoresByEstadoBetweenDateTrocoLiquido($estado, $dateIni, $dateFin);
-        
-        return $result;
-    }
-    
-     /**
-     * 
-     * @param type $idOperador
-     * @param type $dateIni
-     * @param type $dateFin
-     * @return type
-     */
-    public function findByOperadorBetweenDateCancelado($idOperador, $dateIni = "", $dateFin = "")
-    {
-        $result = $this->dao->findByOperadorBetweenDateCancelado($idOperador, $dateIni, $dateFin);
-        
-        return $result;
-    } 
-    
-    /**
-     * 
-     * @param type $idOperador
-     * @param type $dateIni
-     * @param type $dateFin
-     * @return type
-     */
-    public function findByOperadorBetweenDateTrocoCancelado($idOperador, $dateIni = "", $dateFin = "")
-    {
-        $result = $this->dao->findByOperadorBetweenDateTrocoCancelado($idOperador, $dateIni, $dateFin);
-        
-        return $result;
-    }
-    
-    /**
-     * 
-     * @param type $dateIni
-     * @param type $dateFin
-     * @return type
-     */
-    public function findTotalDateBruto($dateIni = "", $dateFin = "")
-    {
-        $result = $this->dao->findTotalDateBruto($dateIni, $dateFin);
-        
-        return $result;
-    }
-    
-    /**
-     * 
-     * @param type $dateIni
-     * @param type $dateFin
-     * @return type
-     */
-    public function findTotalDateLiquido($dateIni = "", $dateFin = "")
-    {
-        $result = $this->dao->findTotalDateLiquido($dateIni, $dateFin);
-        
-        return $result;
-    }
-    
-     /**
-     * 
-     * @param type $dateIni
-     * @param type $dateFin
-     * @return type
-     */
-    public function findTotalnDateTrocoLiquido($dateIni = "", $dateFin = "")
-    {
-        $result = $this->dao->findTotalnDateTrocoLiquido($dateIni, $dateFin);
+        $result = $this->dao->findByCodOperacao($codOperacao, $codigoTransacao, $data);
         
         return $result;
     }
