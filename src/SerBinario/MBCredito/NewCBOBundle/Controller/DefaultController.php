@@ -284,8 +284,8 @@ class DefaultController extends Controller
             $count = 0;
             foreach($objArray->getIterator() as $obj) {
                 $transacoesArray[$count] = $obj;
-                $transacoesArray[$count]['bruto'] = number_format($transacoesArray[$count]['bruto'], 2, ',', ' ');
-                $transacoesArray[$count]['liquido'] = number_format($transacoesArray[$count]['liquido'], 2, ',', ' ');
+                $transacoesArray[$count]['bruto'] = number_format($transacoesArray[$count]['bruto'], 2, ',', '.');
+                $transacoesArray[$count]['liquido'] = number_format($transacoesArray[$count]['liquido'], 2, ',', '.');
                 $count++;
             }            
             
@@ -300,16 +300,16 @@ class DefaultController extends Controller
                 'recordsFiltered'   => "{$countEventos}",
                 'data'              => $transacoesArray,
                 'somatorios'        =>array(
-                  "somaTotalBruto"   => number_format($valorTotalBruto, 2, ',', ' '),
-                  "somaTotalLiquido" => number_format($valorTotalLiquido, 2, ',', ' '),
-                  "somaPeBruto"      => number_format($valorTotalPeBruto, 2, ',', ' '),
-                  "somaPeLiquido"    => number_format($valorTotalPeLiquido, 2, ',', ' '),
-                  "somaAlBruto"      => number_format($valorTotalAlBruto, 2, ',', ' '),
-                  "somaAlLiquido"    => number_format($valorTotalAlLiquido, 2, ',', ' '),
-                  "somaBaBruto"      => number_format($valorTotalBaBruto, 2, ',', ' '),
-                  "somaBaLiquido"    => number_format($valorTotalBaLiquido, 2, ',', ' '),
-                  "somaMgBruto"      => number_format($valorTotalMgBruto, 2, ',', ' '),
-                  "somaMgLiquido"    => number_format($valorTotalMgLiquido, 2, ',', ' ')                    
+                  "somaTotalBruto"   => number_format($valorTotalBruto, 2, ',', '.'),
+                  "somaTotalLiquido" => number_format($valorTotalLiquido, 2, ',', '.'),
+                  "somaPeBruto"      => number_format($valorTotalPeBruto, 2, ',', '.'),
+                  "somaPeLiquido"    => number_format($valorTotalPeLiquido, 2, ',', '.'),
+                  "somaAlBruto"      => number_format($valorTotalAlBruto, 2, ',', '.'),
+                  "somaAlLiquido"    => number_format($valorTotalAlLiquido, 2, ',', '.'),
+                  "somaBaBruto"      => number_format($valorTotalBaBruto, 2, ',', '.'),
+                  "somaBaLiquido"    => number_format($valorTotalBaLiquido, 2, ',', '.'),
+                  "somaMgBruto"      => number_format($valorTotalMgBruto, 2, ',', '.'),
+                  "somaMgLiquido"    => number_format($valorTotalMgLiquido, 2, ',', '.')                    
                )
             );
 
