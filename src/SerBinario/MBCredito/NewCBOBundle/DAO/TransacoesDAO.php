@@ -93,8 +93,8 @@ class TransacoesDAO
             
             if(count($data) == 2) {
                 $qb->andWhere($qb->expr()->between("a.dataTransacoes", ":dataIn", ":dataFin"));
-                $qb->setParameter("dataIn", $data['dataIn']);
-                $qb->setParameter("dataFin", $data["dataFi"]);
+                $qb->setParameter("dataIn", $data['dataIn']->format("Y-m-d"));
+                $qb->setParameter("dataFin", $data["dataFi"]->format("Y-m-d"));
             }          
             
             $qb->setParameter("codOperacao", $codOperacao);
@@ -138,8 +138,8 @@ class TransacoesDAO
             
             if(count($data) == 2) {
                 $qb->andWhere($qb->expr()->between("a.dataTransacoes", ":dataIn", ":dataFin"));
-                $qb->setParameter("dataIn", $data['dataIn']);
-                $qb->setParameter("dataFin", $data["dataFi"]);
+                $qb->setParameter("dataIn", $data['dataIn']->format("Y-m-d"));
+                $qb->setParameter("dataFin", $data["dataFi"]->format("Y-m-d"));
             }
             
             $qb->setParameter("operador", $operador);
