@@ -67,7 +67,7 @@ class ArquivoCabecalho
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Transacoes", mappedBy="arquivoCabecalhoArquivoCabecalho", cascade = {"delete"})
+     * @ORM\OneToMany(targetEntity="Transacoes", mappedBy="arquivoCabecalhoArquivoCabecalho", cascade = {"remove"})
      */
     private $transacoes;
     
