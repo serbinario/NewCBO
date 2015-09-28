@@ -109,6 +109,9 @@ class DefaultController extends Controller
                 $CBFRN  = $this->get('rn_CBF');
                 $result = $CBFRN->salvar($arquivoCabecalho);
                 
+                #Recupera os ultimos 15 arquivos 
+                $arquivosCabecalhos  = $arquivoCabecalhoDAO->findLastsDesc();
+                
                 #Verificando a resposta
                 if(!$result) {
                     $this->get('session')->getFlashBag()->add('danger', "Erro ao importar o arquivo!");
