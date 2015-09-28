@@ -74,7 +74,7 @@ class ArquivoCabecalho
     
     /**
      * @var ArquivoCBF
-     * @ORM\OneToOne(targetEntity="ArquivoCBF")
+     * @ORM\OneToOne(targetEntity="ArquivoCBF", cascade = {"remove"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="arquivocbf_id_arquivocbf", referencedColumnName="id")
      * })
