@@ -86,11 +86,11 @@ class DefaultController extends Controller
                 $path = __DIR__.'/../../../../../web/upload/files/'. $arquivoCBF->getImageName();
                 
                 #Verificando se o arquivo já existe
-                if($arquivoCBFRN->findByName($arquivoCBF->getImageName())) {
+                if($arquivoCBFRN->findByName($arquivoCBF->getImageFile()->getClientOriginalName())) {
                     $this->get('session')->getFlashBag()->add('danger', "Arquivo já foi importado!");
                     
                     #Retorno
-                    return array("form" => $form->createView());
+                    return array("form" => $form->createView(), "arquivos" => $arquivosCabecalhos);
                 }
                
                 #Executando e recuperando o resultado
@@ -101,7 +101,7 @@ class DefaultController extends Controller
                     $this->get('session')->getFlashBag()->add('danger', "Erro ao importar o arquivo!");
                     
                     #Retorno
-                    return array("form" => $form->createView());
+                    return array("form" => $form->createView(), "arquivos" => $arquivosCabecalhos);
                 } 
                 
                 #Processamento do arquivo, montando à arvore de objetos.
