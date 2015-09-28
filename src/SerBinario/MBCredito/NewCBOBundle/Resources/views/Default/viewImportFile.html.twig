@@ -1,5 +1,46 @@
 {% extends "::base.html.twig" %}
 
+{% block stylesheets %}
+    {{parent()}}
+    <style type="text/css" class="init">
+        td.details-control {
+            background: url({{asset("imagens/icone-produto-plus.png")}}) no-repeat center center;
+            cursor: pointer;
+        }
+        tr.details td.details-control {
+            background: url({{asset("imagens/icone-produto-minus.png")}}) no-repeat center center;
+        }
+
+        a.editar {
+            background: url({{asset("imagens/icone-editar.png")}}) no-repeat 0 0;
+            width: 22px;
+        }
+
+        a.visualizar {
+            background: url({{asset("imagens/icone-visualizar.png")}}) no-repeat 0 0;
+            width: 23px;
+        }
+
+        a.excluir {
+            background: url({{asset("imagens/icone-excluir.png")}}) no-repeat 0 0;
+            width: 21px;
+        }
+
+        td.bt {
+            padding: 10px 0;
+            width: 126px;
+        }
+
+        td.bt a {
+            float: left;
+            height: 22px;
+            margin: 0 10px;
+        }
+        
+    </style>
+
+{% endblock %}
+
 {% block body %}
     {{ parent() }}
 
@@ -34,7 +75,8 @@
                                 <thead>
                                     <th>Nome do Arquivo</th>
                                     <th>Data da Importação</th>
-                                    <th>Data do Arquivo</th>                                    
+                                    <th>Data do Arquivo</th>  
+                                    <th>Ação</th>
                                 </thead>
                                 <tbody>
                                     
@@ -43,6 +85,7 @@
                                             <td>{{ arquivo.arquivoCBF.imageName }}</td>
                                             <td>{{ arquivo.arquivoCBF.updatedAt|date('d/m/Y') }}</td>
                                             <td>{{ arquivo.dataArquivoCabecalho|date('d/m/Y') }}</td>
+                                            <td><a href="delete/{{arquivo.idArquivoCabecalho}}" class="excluir" title="Excluir"></a></td>
                                         </tr>
                                     {% endfor %}
                                     
@@ -51,6 +94,7 @@
                                     <th>Nome do Arquivo</th>
                                     <th>Data da Importação</th>
                                     <th>Data do Arquivo</th>
+                                    <th>Ação</th>
                                 </tfoot>
                             </table>                        
                     </fieldset>
