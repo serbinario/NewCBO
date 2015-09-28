@@ -88,6 +88,9 @@ class DefaultController extends Controller
                 #Verificando se o arquivo já existe
                 if($arquivoCBFRN->findByName($arquivoCBF->getImageName())) {
                     $this->get('session')->getFlashBag()->add('danger', "Arquivo já foi importado!");
+                    
+                    #Retorno
+                    return array("form" => $form->createView());
                 }
                
                 #Executando e recuperando o resultado
