@@ -227,6 +227,9 @@ class DefaultController extends Controller
                         }
                     }
                 }
+            } else {
+                $whereCamposPesquisa['dataIn'] = new \DateTime("now");
+                $whereCamposPesquisa['dataFi'] = new \DateTime("now");
             }
 
             $entityJOIN       = array();             
