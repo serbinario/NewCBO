@@ -235,7 +235,7 @@ class DefaultController extends Controller
             $entity           = "SerBinario\MBCredito\NewCBOBundle\Entity\Operadores"; 
             $columnWhereMain  = "";
             $whereValueMain   = "";            
-            $whereFull        = "" ;
+            $whereFull        = " a.statusOperadores = true" ;
             
             $gridClass = new GridClass($this->getDoctrine()->getManager(), 
                     $parametros,
@@ -248,7 +248,7 @@ class DefaultController extends Controller
                     );            
          
             $resultCliente   = $gridClass->builderQuery();            
-            $countTotal      = $gridClass->getCount();
+            $countTotal      = $gridClass->getCountByWhereFull(array(), array(), $whereFull);
             $countEventos    = count($resultCliente);          
             
             #Variáveis de soma global

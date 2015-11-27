@@ -49,6 +49,18 @@ class OperadoresRN
         return $result;
     }
     
+    /**
+     * 
+     * @param Operadores $operadores
+     * @return type
+     */
+    public function delete(Operadores $operadores)
+    {
+        $result = $this->operadoresDAO->delete($operadores);
+        
+        return $result;
+    }
+    
     
     /**
      * 

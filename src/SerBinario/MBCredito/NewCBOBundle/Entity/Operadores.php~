@@ -34,6 +34,85 @@ class Operadores
      * @ORM\Column(name="nome_operadores", type="string", length=50, nullable=true)
      */
     private $nomeOperadores;
+    
+    /**
+     *
+     * @var @ORM\Column(name="status_operadores", type="boolean", nullable=true)
+     */
+    private $statusOperadores = true;
+    
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Transacoes", mappedBy="operadoresOperadores")
+     */
+    private $transacoes;
 
 
+
+    /**
+     * Get idOperadores
+     *
+     * @return integer 
+     */
+    public function getIdOperadores()
+    {
+        return $this->idOperadores;
+    }
+
+    /**
+     * Set codOperadores
+     *
+     * @param string $codOperadores
+     * @return Operadores
+     */
+    public function setCodOperadores($codOperadores)
+    {
+        $this->codOperadores = $codOperadores;
+
+        return $this;
+    }
+
+    /**
+     * Get codOperadores
+     *
+     * @return string 
+     */
+    public function getCodOperadores()
+    {
+        return $this->codOperadores;
+    }
+
+    /**
+     * Set nomeOperadores
+     *
+     * @param string $nomeOperadores
+     * @return Operadores
+     */
+    public function setNomeOperadores($nomeOperadores)
+    {
+        $this->nomeOperadores = $nomeOperadores;
+
+        return $this;
+    }
+
+    /**
+     * Get nomeOperadores
+     *
+     * @return string 
+     */
+    public function getNomeOperadores()
+    {
+        return $this->nomeOperadores;
+    }
+    
+    /**
+     * Get transacoes
+     *
+     * @return  \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getTransacoes() 
+    {
+        return $this->transacoes;
+    }
 }

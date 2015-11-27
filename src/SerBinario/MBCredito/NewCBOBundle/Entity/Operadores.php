@@ -36,6 +36,12 @@ class Operadores
     private $nomeOperadores;
     
     /**
+     *
+     * @var @ORM\Column(name="status_operadores", type="boolean", nullable=true)
+     */
+    private $statusOperadores = true;
+    
+    /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Transacoes", mappedBy="operadoresOperadores")
@@ -108,5 +114,58 @@ class Operadores
     public function getTransacoes() 
     {
         return $this->transacoes;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->transacoes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set statusOperadores
+     *
+     * @param boolean $statusOperadores
+     * @return Operadores
+     */
+    public function setStatusOperadores($statusOperadores)
+    {
+        $this->statusOperadores = $statusOperadores;
+
+        return $this;
+    }
+
+    /**
+     * Get statusOperadores
+     *
+     * @return boolean 
+     */
+    public function getStatusOperadores()
+    {
+        return $this->statusOperadores;
+    }
+
+    /**
+     * Add transacoes
+     *
+     * @param \SerBinario\MBCredito\NewCBOBundle\Entity\Transacoes $transacoes
+     * @return Operadores
+     */
+    public function addTransaco(\SerBinario\MBCredito\NewCBOBundle\Entity\Transacoes $transacoes)
+    {
+        $this->transacoes[] = $transacoes;
+
+        return $this;
+    }
+
+    /**
+     * Remove transacoes
+     *
+     * @param \SerBinario\MBCredito\NewCBOBundle\Entity\Transacoes $transacoes
+     */
+    public function removeTransaco(\SerBinario\MBCredito\NewCBOBundle\Entity\Transacoes $transacoes)
+    {
+        $this->transacoes->removeElement($transacoes);
     }
 }
