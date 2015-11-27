@@ -41,7 +41,7 @@ class AgentesController extends Controller
             $entity           = "SerBinario\MBCredito\NewCBOBundle\Entity\Operadores"; 
             $columnWhereMain  = "";
             $whereValueMain   = "";            
-            $whereFull        = ""; 
+            $whereFull        = " a.statusOperadores = true" ; 
             
             $gridClass = new GridClass($this->getDoctrine()->getManager(), 
                     $parametros,
@@ -55,7 +55,7 @@ class AgentesController extends Controller
             
             $resultDetalhe   = $gridClass->builderQuery();        
 
-            $countTotal           = $gridClass->getCount();            
+            $countTotal           = $gridClass->getCountByWhereFull(array(), array(), $whereFull);            
             $countDetalhe         = count($resultDetalhe);     
                        
             for($i=0;$i < $countDetalhe; $i++)
@@ -133,7 +133,7 @@ class AgentesController extends Controller
     }
     
      /**
-     * @Route("/update/{id}", name="updateEmissora")
+     * @Route("/update/{id}", name="updateAgentes")
      * @Template()
      */
     public function updateAction(Request $request, $id)
@@ -181,5 +181,32 @@ class AgentesController extends Controller
 
         #Retorno
         return array("form" => $form->createView());
+    }
+    
+    /**
+     * @Route("/delete/{id}", name="deleteAgentes")
+     * @Template()
+     */
+    public function deleteAction($id) 
+    {
+        #Recuperando o serviço do container
+        $operadoresRN = $this->get('operadores_rn');
+        $operador     = $operadoresRN->findByChave($id);
+        
+        #Desativando o operador
+        $operador[0]->setStatusOperadores(false);
+        
+        #Alterando o operador
+        $result       = $operadoresRN->update($operador[0]);
+        
+        #Mensagens de retorno
+         if ($result) {            
+            $this->get('session')->getFlashBag()->add('success', 'Agente excluído com sucesso!');
+        } else {            
+            $this->get('session')->getFlashBag()->add('danger', 'Erro ao excluir agente, tente novamente!');
+        }
+        
+        #retorno
+        return $this->redirectToRoute("gridAgentes");
     }
 }

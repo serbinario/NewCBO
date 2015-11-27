@@ -71,6 +71,20 @@ class OperadoresDAO
         }
     }
     
+    
+    public function delete(Operadores $entity)
+    {
+         try {
+            $this->manager->remove($entity);
+            $this->manager->flush();
+            
+            return true;
+        } catch (\Exception $ex) {
+            var_dump($ex->getMessage());exit;
+            return false;
+        }
+    }
+    
     /**
      * 
      * @param type $id
