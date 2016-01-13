@@ -14,49 +14,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="login")
-     * @Template()
-     */
-    public function loginAction()
-    {
-        return array();
-    }
-    
-    /**
-     * @Route("/logar", name="logar")
-     * @Template()
-     */
-    public function logarAction(Request $request)
-    {
-        $dados = $request->request->all();
-        
-        $login = $dados['username'];
-        $senha = $dados['password'];
-        
-        if($login == "admin" && $senha == "admin") {
-            $this->get("session")->set("perfil", "ADMIN");
-            return $this->redirect($this->generateUrl("gridTransacoes"));
-        } elseif($login == "mbcredito" && $senha == "mbcredito"){
-            $this->get("session")->set("perfil", "USER");
-            return $this->redirect($this->generateUrl("gridTransacoes"));
-        } else {
-            $this->addFlash("danger", "login ou senha inválidos");
-        }
-        
-        return $this->redirect($this->generateUrl("login"));
-    }
-    
-    /**
-     * @Route("/logout", name="logout")
-     * @Template()
-     */
-    public function logoutAction() 
-    {
-        return $this->redirect($this->generateUrl("login"));
-    }
-    
-    
-    /**
      * @Route("viewImportFile", name="viewImportFile")
      * @Template("")
      */

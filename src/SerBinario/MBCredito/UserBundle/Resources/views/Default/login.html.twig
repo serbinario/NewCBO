@@ -26,13 +26,13 @@
                                 </div>
                             {% endfor %}
                         {% endfor %}
-                        <form accept-charset="UTF-8" role="form" class="form-signin" method="post" action="{{ path('logar') }}">
+                        <form accept-charset="UTF-8" role="form" class="form-signin" method="post" action="{{ path('login_check') }}">
                             <fieldset>
                                 <label class="panel-login">
                                     <div class="login_result"></div>
                                 </label>
-                                <input type="text" class="form-control username" name="username" value="" placeholder="Login" required="" autofocus="">
-                                <input type="password" class="form-control" name="password" placeholder="Senha" required="">
+                                <input type="text" class="form-control username" name="_username" value="{{ last_username }}" placeholder="Login" required="" autofocus="">
+                                <input type="password" class="form-control" name="_password" placeholder="Senha" required="">
                                 <br/>
                                 <input class="btn btn-lg btn-primary btn-block" type="submit" id="Logar" value="Logar">
                             </fieldset>
