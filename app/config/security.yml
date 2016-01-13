@@ -32,7 +32,9 @@ security:
 
     access_control:
         - { path: ^/user/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/*, roles: ROLE_ADMIN }
+        - { path: ^/user/index, roles: ROLE_USER }
+#        - { path: ^/user/teste, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/cbo/*, roles: ROLE_ADMIN }
         - { path: ^/convenio/*, roles: ROLE_USER }
         - { path: ^/agencia/*, roles: ROLE_USER }
         - { path: ^/callcenter/*, roles: ROLE_USER }

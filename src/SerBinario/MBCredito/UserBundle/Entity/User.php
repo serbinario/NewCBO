@@ -56,6 +56,12 @@ class User implements UserInterface, AdvancedUserInterface, EquatableInterface, 
     private $roles;
 
     /**
+     * @ORM\OneToOne(targetEntity="SerBinario\MBCredito\NewCBOBundle\Entity\Operadores")
+     * @ORM\JoinColumn(name="id_operadores", referencedColumnName="id_operadores")
+     */
+    private $operador;
+
+    /**
      * Construtor
      */
     public function __construct()
@@ -98,7 +104,12 @@ class User implements UserInterface, AdvancedUserInterface, EquatableInterface, 
      */
     public function getRoles()
     {
-        return $this->roles->toArray();
+        $roles = array();
+        foreach ($this->roles->toArray() as $role) {
+            $roles[] = $role->getRole();
+        }
+
+        return $roles;
     }
 
     /**
@@ -330,5 +341,41 @@ class User implements UserInterface, AdvancedUserInterface, EquatableInterface, 
         }
 
         return true;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     * @return User
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Set operador
+     *
+     * @param \SerBinario\MBCredito\NewCBOBundle\Entity\Operadores $operador
+     * @return User
+     */
+    public function setOperador(\SerBinario\MBCredito\NewCBOBundle\Entity\Operadores $operador = null)
+    {
+        $this->operador = $operador;
+
+        return $this;
+    }
+
+    /**
+     * Get operador
+     *
+     * @return \SerBinario\MBCredito\NewCBOBundle\Entity\Operadores 
+     */
+    public function getOperador()
+    {
+        return $this->operador;
     }
 }

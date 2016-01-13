@@ -1,14 +1,14 @@
-#root:
-#    path: /
-#    defaults:
-#        _controller: FrameworkBundle:Redirect:urlRedirect
-#        path: /cbo/viewImportFileCBO
-#        permanent: true
+root:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /user/index
+        permanent: true
 
 new_cbo:
     resource: "@NewCBOBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /cbo
 
 convenio:
     resource: "@CallCenterBundle/Controller/ConveniosController.php"

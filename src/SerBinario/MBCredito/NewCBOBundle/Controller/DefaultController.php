@@ -14,15 +14,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="index")
-     * @Template()
-     */
-    public function indexAction()
-    {
-        return array();
-    }
-
-    /**
      * @Route("viewImportFile", name="viewImportFile")
      * @Template("")
      */
