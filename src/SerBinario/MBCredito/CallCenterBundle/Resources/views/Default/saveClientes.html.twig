@@ -16,10 +16,10 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1>
-            Clientes
+          <h3>
+            Cadastro de clientes
             {#<small>it all starts here</small>#}
-          </h1>     
+          </h3>     
         </section>
 
         <!-- Main content -->
@@ -44,14 +44,14 @@
                         {{ form_row(form.nome) }}
                         {{ form_row(form.cpf) }}
                         {{ form_row(form.agencia) }}
-                        {{ form_row(form.conta) }}
                         {{ form_row(form.chamadas.codigoTransacao) }}
+                        {{ form_row(form.chamadas.tipoContrato) }}   
+                        {{ form_row(form.chamadas.dataContratado) }}
+                        {{ form_row(form.conta) }}
+                        {{ form_row(form.chamadas.convenio) }}
                         {{ form_row(form.telefones) }}
                         {{ form_row(form.chamadas.prazo) }}
-                        {{ form_row(form.chamadas.valorContratado) }}
-                        {{ form_row(form.chamadas.dataContratado) }}
-                        {{ form_row(form.chamadas.tipoContrato) }}
-                        {{ form_row(form.chamadas.convenio) }}
+                        {{ form_row(form.chamadas.valorContratado) }}                    
                     </div><!-- /.box-body -->
 
                     <div class="box-footer">

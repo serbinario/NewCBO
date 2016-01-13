@@ -30,4 +30,10 @@ agentes:
     prefix:   /agentes
     type:     annotation
 
+security:
+    resource: "@UserBundle/Controller/"
+    type:     annotation
+    prefix:   /user
+
+
 
