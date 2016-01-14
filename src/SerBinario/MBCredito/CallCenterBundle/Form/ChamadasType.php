@@ -34,9 +34,9 @@ class ChamadasType extends AbstractType
                     'required'     => true,
                     'label' => 'N° do contrato: ',
                     'attr'  => array(                        
-                        'widget_col'=> '4', 
+                        'widget_col' => '4',
                         'placeholder' => 'N° do contrato',
-                        'max_length'=>11
+                        'maxlength' => 11
                        # "class"    => "mask_numero"
                     )                    
                 ))
