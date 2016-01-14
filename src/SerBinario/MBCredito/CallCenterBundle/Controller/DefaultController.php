@@ -116,7 +116,7 @@ class DefaultController extends Controller
                 
                 #Recuoerando a chamada
                 $chamada = $cliente->getChamadas();
-                
+
                 #Tratando o valor
                 $valor      = str_replace(".", "", $chamada->getValorContratado());
                 $valorFinal = str_replace(",", ".", $valor);
@@ -184,7 +184,7 @@ class DefaultController extends Controller
                 
                 #Recuoerando a chamada
                 $chamada = $cliente->getChamadas();
-                
+
                 //Adicionando telefones
                 $idTelefones = array();
                 foreach ($cliente->getTelefones() as $telefone) {

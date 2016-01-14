@@ -30,13 +30,14 @@ class ChamadasType extends AbstractType
                         'widget_col'=> '4',                        
                     )                    
                 ))     
-            ->add('codigoTransacao', 'text', array(                    
+            ->add('codigoTransacao', 'integer', array(
                     'required'     => true,
                     'label' => 'N° do contrato: ',
                     'attr'  => array(                        
                         'widget_col'=> '4', 
                         'placeholder' => 'N° do contrato',
-                        "class"    => "mask_numero"
+                        'max_length'=>11
+                       # "class"    => "mask_numero"
                     )                    
                 ))
             ->add('valorContratado', 'text', array(
