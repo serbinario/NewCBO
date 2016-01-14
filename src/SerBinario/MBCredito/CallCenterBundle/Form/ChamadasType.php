@@ -30,7 +30,7 @@ class ChamadasType extends AbstractType
                         'widget_col'=> '4',                        
                     )                    
                 ))     
-            ->add('codigoTransacao', 'integer', array(
+            ->add('codigoTransacao', 'text', array(
                     'required'     => true,
                     'label' => 'N° do contrato: ',
                     'attr'  => array(                        
