@@ -37,7 +37,7 @@ class User implements UserInterface, AdvancedUserInterface, EquatableInterface, 
     private $salt;
 
     /**
-     * @ORM\Column(type="string", length=60, unique=true)
+     * @ORM\Column(type="string", length=60)
      */
     private $email;
 
