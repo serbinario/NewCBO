@@ -121,7 +121,7 @@ class DefaultController extends Controller
                 $valor      = str_replace(".", "", $chamada->getValorContratado());
                 $valorFinal = str_replace(",", ".", $valor);
                 $chamada->setValorContratado($valorFinal);
-                var_dump($chamada->getCodigoTraansacao());exit;
+                echo $chamada->getCodigoTraansacao();exit;
                 #Trasnformando em um array collection
                 $cliente->setChamadas(new \Doctrine\Common\Collections\ArrayCollection());                
                 $cliente->addChamada($chamada);            
