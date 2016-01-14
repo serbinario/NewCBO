@@ -59,7 +59,7 @@ class ChamadasType extends AbstractType
                 )
             ))           
             ->add('tipoContrato', 'entity', array(
-                'label'        => 'Tipod de créditos',
+                'label'        => 'Tipos de créditos',
                 'required'     => true,
                 'empty_value' => false,
                 'class' => 'SerBinario\MBCredito\CallCenterBundle\Entity\TipoContrato',
