@@ -55,7 +55,7 @@ class Chamadas
      *
      * @var integer
      * 
-     * @ORM\Column(name="codigo_transacao", type="integer", nullable=true)
+     * @ORM\Column(name="codigo_transacao", type="string", nullable=true)
      */
     private $codigoTransacao;
     
