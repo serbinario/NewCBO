@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="94ec9ae4-9987-4b05-b22a-42d67bfc7a1d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Form/ChamadasType.php" afterPath="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Form/ChamadasType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/newChamada.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/newChamada.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/saveClientes.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/saveClientes.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="NewCBOWeb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,21 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="saveClientes.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/saveClientes.html.twig">
+      <file leaf-file-name="ChamadasType.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Form/ChamadasType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.125">
-              <caret line="51" column="56" selection-start-line="51" selection-start-column="56" selection-end-line="51" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="newChamada.html.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/newChamada.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6">
-              <caret line="53" column="54" selection-start-line="53" selection-start-column="54" selection-end-line="53" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.42391303">
+              <caret line="61" column="40" selection-start-line="61" selection-start-column="40" selection-end-line="61" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -66,9 +53,9 @@
         <option value="$PROJECT_DIR$/app/config/security.yml" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/UserBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/gridChamadas.html.twig" />
-        <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Form/ChamadasType.php" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/saveClientes.html.twig" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/newChamada.html.twig" />
+        <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Form/ChamadasType.php" />
       </list>
     </option>
   </component>
@@ -343,7 +330,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="24" width="1368" height="616" extended-state="7" />
+    <frame x="-1" y="24" width="1368" height="616" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24816984" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
@@ -496,14 +483,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Form/ChamadasType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.9583333">
-          <caret line="61" column="52" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Form/ClientesType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.173913">
@@ -512,18 +491,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/newChamada.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6">
+          <caret line="53" column="54" selection-start-line="53" selection-start-column="54" selection-end-line="53" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/saveClientes.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.125">
+        <state vertical-scroll-proportion="0.6847826">
           <caret line="51" column="56" selection-start-line="51" selection-start-column="56" selection-end-line="51" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/newChamada.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Form/ChamadasType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6">
-          <caret line="53" column="54" selection-start-line="53" selection-start-column="54" selection-end-line="53" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.42391303">
+          <caret line="61" column="40" selection-start-line="61" selection-start-column="40" selection-end-line="61" selection-end-column="40" />
           <folding />
         </state>
       </provider>
