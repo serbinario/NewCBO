@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="94ec9ae4-9987-4b05-b22a-42d67bfc7a1d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Form/ChamadasType.php" afterPath="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Form/ChamadasType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="NewCBOWeb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,8 +27,8 @@
       <file leaf-file-name="ChamadasType.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Form/ChamadasType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39347827">
-              <caret line="32" column="45" selection-start-line="32" selection-start-column="45" selection-end-line="32" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.58913046">
+              <caret line="38" column="40" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -466,8 +464,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Form/ChamadasType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39347827">
-          <caret line="32" column="45" selection-start-line="32" selection-start-column="45" selection-end-line="32" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.58913046">
+          <caret line="38" column="40" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
           <folding />
         </state>
       </provider>
