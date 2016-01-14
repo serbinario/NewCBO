@@ -17,7 +17,7 @@ class ChamadasType extends AbstractType
     {
         $arrayPrazo = array();
         
-        for ($i = 1; $i <= 120; $i++) {
+        for ($i = 1; $i <= 96; $i++) {
             $arrayPrazo[] = $i;
         }
         
@@ -25,22 +25,22 @@ class ChamadasType extends AbstractType
             ->add('prazo', 'choice', array(
                     'choice_list' => new ChoiceList($arrayPrazo, $arrayPrazo),
                     'required'     => true,
-                    'label' => 'Prazo: ', 
+                    'label' => 'Quantidade de parcelas: ',
                     'attr'  => array(                        
                         'widget_col'=> '4',                        
                     )                    
                 ))     
             ->add('codigoTransacao', 'text', array(                    
                     'required'     => true,
-                    'label' => 'Codigo da Operação: ', 
+                    'label' => 'N° do contrato: ',
                     'attr'  => array(                        
                         'widget_col'=> '4', 
-                        'placeholder' => 'Codigo da Operação',
+                        'placeholder' => 'N° do contrato',
                         "class"    => "mask_numero"
                     )                    
                 ))
             ->add('valorContratado', 'text', array(
-                'label' => 'Valor do Contrato: ',
+                'label' => 'Valor do contrato: ',
                 'required'     => true,
                 'attr'  => array(
                     'placeholder' => 'valor do contrato',
@@ -59,7 +59,7 @@ class ChamadasType extends AbstractType
                 )
             ))           
             ->add('tipoContrato', 'entity', array(
-                'label'        => 'Tipo do contrato',
+                'label'        => 'Tipod de créditos',
                 'required'     => true,
                 'empty_value' => false,
                 'class' => 'SerBinario\MBCredito\CallCenterBundle\Entity\TipoContrato',
