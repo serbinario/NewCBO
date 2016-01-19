@@ -59,7 +59,7 @@ class DefaultController extends Controller
                 $chamadasArray[$i]['agencia']   = $resultCliente[$i]->getAgencia()->getNumeroAgencia();
 
                 #Tratando os telefones
-                $telefones                      = $resultCliente[$i]->getTelefones()->toArray() ?? [];
+                $telefones                      = $resultCliente[$i]->getTelefones() ?: [];
 
                 #montando o array de telefones
                 $arrayTelefones = [];
