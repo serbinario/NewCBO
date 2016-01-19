@@ -51,18 +51,34 @@ class DefaultController extends Controller
 
             for($i=0;$i < $countEventos; $i++)
             {                
-                $chamadasArray[$i]['DT_RowId'] = "row_".$resultCliente[$i]->getId();
-                $chamadasArray[$i]['id']       = $resultCliente[$i]->getId();
-                $chamadasArray[$i]['nome']     = $resultCliente[$i]->getNome();
-                $chamadasArray[$i]['cpf']      = $resultCliente[$i]->getCpf();
-                $chamadasArray[$i]['conta']    = $resultCliente[$i]->getConta();
-                $chamadasArray[$i]['agencia']  = $resultCliente[$i]->getAgencia()->getNumeroAgencia();                                
-                
+                $chamadasArray[$i]['DT_RowId']  = "row_".$resultCliente[$i]->getId();
+                $chamadasArray[$i]['id']        = $resultCliente[$i]->getId();
+                $chamadasArray[$i]['nome']      = $resultCliente[$i]->getNome();
+                $chamadasArray[$i]['cpf']       = $resultCliente[$i]->getCpf();
+                $chamadasArray[$i]['conta']     = $resultCliente[$i]->getConta();
+                $chamadasArray[$i]['agencia']   = $resultCliente[$i]->getAgencia()->getNumeroAgencia();
+
+                #Tratando os telefones
+                $telefones                      = $resultCliente[$i]->getTelefones()->toArray() ?? [];
+
+                #montando o array de telefones
+                $arrayTelefones = [];
+                $count          = 0;
+                foreach($telefones as $telefone) {
+                    $arrayTelefones[$count] = $telefone->getTelefone();
+
+                    $count++;
+                }
+
+                #setando os telefones
+                $chamadasArray[$i]['telefones'] = $arrayTelefones;
+                $chamadasArray[$i]['telefone']  = isset($arrayTelefones[0]) ? $arrayTelefones[0]  : "";
+
                 $chamadas      = $resultCliente[$i]->getChamadas()->toArray();             
                 $arrayChamadas = array();
                 $contador      = 0;
                 
-                foreach($chamadas as $chamada) {                    
+                foreach($chamadas as $chamada) {
                     $arrayChamadas[$contador]['prazo']            = $chamada->getPrazo();
                     $arrayChamadas[$contador]['valorContratado']  = "R$ " . number_format($chamada->getValorContratado(), 2, ',', '.');
                     $arrayChamadas[$contador]['dataContratacao']  = $chamada->getDataContratado()->format("d/m/Y");

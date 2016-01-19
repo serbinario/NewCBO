@@ -81,7 +81,8 @@
                                             <th>Nome</th>
                                             <th>CPF</th>
                                             <th>Agência</th>
-                                            <th>N. da Conta</th>                                               
+                                            <th>N. da Conta</th>
+                                            <th>Telefones</th>
                                             <th>Acão</th>
                                         </tr>
                                     </thead>
@@ -93,6 +94,7 @@
                                             <th>CPF</th>
                                             <th>Agência</th>
                                             <th>Nº da Conta</th>
+                                            <th>Telefones</th>
                                             <th>Acão</th>
                                         </tr>
                                     </tfoot>
@@ -115,7 +117,7 @@
     <script type="text/javascript" src="{{asset('js/shCore.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/javax_faces.js')}}"></script>
     <script type="text/javascript" language="javascript" class="init">
-    
+
     function format(d) {
         var retorno = "<table>";
         retorno    += "<tr>";
@@ -142,11 +144,27 @@
     }
     
     $(document).ready(function ()
-        {
+    {
+
             var dt = $('#example').DataTable({
                 "processing": true,
                 "serverSide": true,
                 "bFilter": true, //Ativa o Search global
+                "fnRowCallback": function( nRow, aData, iDisplayIndex ) {
+                    $('td:eq(5)', nRow).attr("data-toggle", "tooltip");
+                    $('td:eq(5)', nRow).attr("data-placement", "top");
+                    $('td:eq(5)', nRow).attr("data-html", "true");
+
+                    var telefones = "";
+                    for (var i = 0; i < aData.telefones.length; i++) {
+                        telefones += aData.telefones[i] + " ";
+                    }
+
+                    $('td:eq(5)', nRow).attr("title", telefones);
+                    $('td:eq(5)', nRow).addClass("serToolType");
+
+                    return nRow;
+                },
                 "ajax": {
                     "url": "{{ path('gridChamadas') }}",
                     "type": "POST"
@@ -161,7 +179,8 @@
                     {"data": "nome"},
                     {"data": "cpf"},
                     {"data": "agencia"},
-                    {"data": "conta"},            
+                    {"data": "conta"},
+                    {"data": "telefone"},
                     {
                         "class": "bt",
                         "orderable": false,
@@ -241,6 +260,7 @@
                 });
             });
 
+            $('.serToolType').tooltip();
         });
     </script>
 {% endblock %}
