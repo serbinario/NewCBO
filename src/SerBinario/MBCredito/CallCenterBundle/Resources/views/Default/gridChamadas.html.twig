@@ -92,7 +92,7 @@
                                             <th>Nome</th>
                                             <th>CPF</th>
                                             <th>Agência</th>
-                                            <th>N. da Conta</th>                                               
+                                            <th>Nº da Conta</th>
                                             <th>Acão</th>
                                         </tr>
                                     </tfoot>
@@ -123,6 +123,8 @@
         retorno    += "<th>Valor Contratado</th>";
         retorno    += "<th>Data da contratação</th>";
         retorno    += "<th>Tipo contratação</th>";
+        retorno    += "<th>Convênio</th>";
+        retorno    += "<th>Nº do contrato</th>";
         retorno    += "</tr>";        
         
         for (var i = 0; i < d.chamadas.length; i++) {
@@ -131,7 +133,9 @@
             retorno    += "<td>"+d.chamadas[i].valorContratado+"</td>";
             retorno    += "<td>"+d.chamadas[i].dataContratacao+"</td>";
             retorno    += "<td>"+d.chamadas[i].tipoContratacao+"</td>";
-            retorno    += "</tr>";            
+            retorno    += "<td>"+d.chamadas[i].convenio+"</td>"
+            retorno    += "<td>"+d.chamadas[i].codigoTransacao+"</td>";
+            retorno    += "</tr>";
         }
         
         return retorno;
