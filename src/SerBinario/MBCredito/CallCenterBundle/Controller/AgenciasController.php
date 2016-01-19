@@ -131,7 +131,7 @@ class AgenciasController extends Controller
     {        
         #Recuperando o serviço do container
         $agenciaRN = $this->get('rn_agencia');
-        $operador     = $agenciaRN->find($id);
+        $operador  = $agenciaRN->find($id);
         
         #Criando o formulário
         $form = $this->createForm(new AgenciasType(), $operador);

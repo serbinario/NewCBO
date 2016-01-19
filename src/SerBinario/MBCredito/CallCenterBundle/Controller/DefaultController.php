@@ -67,7 +67,9 @@ class DefaultController extends Controller
                     $arrayChamadas[$contador]['valorContratado']  = "R$ " . number_format($chamada->getValorContratado(), 2, ',', '.');
                     $arrayChamadas[$contador]['dataContratacao']  = $chamada->getDataContratado()->format("d/m/Y");
                     $arrayChamadas[$contador]['tipoContratacao']  = $chamada->getTipoContrato()->getTipoContrato();
-                    
+                    $arrayChamadas[$contador]['codigoTransacao']  = $chamada->getCodigoTransacao();
+                    $arrayChamadas[$contador]['convenio']         = $chamada->getConvenio()->getConvenio();
+
                     $contador++;
                 }
                 
@@ -121,7 +123,7 @@ class DefaultController extends Controller
                 $valor      = str_replace(".", "", $chamada->getValorContratado());
                 $valorFinal = str_replace(",", ".", $valor);
                 $chamada->setValorContratado($valorFinal);
-
+                
                 #Trasnformando em um array collection
                 $cliente->setChamadas(new \Doctrine\Common\Collections\ArrayCollection());                
                 $cliente->addChamada($chamada);            
