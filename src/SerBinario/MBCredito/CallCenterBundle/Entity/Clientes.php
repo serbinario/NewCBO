@@ -37,9 +37,9 @@ class Clientes
     
     /**
      *
-     * @var integer
+     * @var string
      * 
-     * @ORM\Column(name="conta", type="integer", nullable=true)
+     * @ORM\Column(name="conta", type="string", nullable=true)
      */
     private $conta; 
     
