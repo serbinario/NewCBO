@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94ec9ae4-9987-4b05-b22a-42d67bfc7a1d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Entity/Chamadas.php" afterPath="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Entity/Chamadas.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Form/ChamadasType.php" afterPath="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Form/ChamadasType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Controller/DefaultController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/gridChamadas.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/gridChamadas.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/newChamada.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/newChamada.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="NewCBOWeb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,8 +28,18 @@
       <file leaf-file-name="gridChamadas.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/gridChamadas.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.78431374">
-              <caret line="140" column="62" selection-start-line="140" selection-start-column="62" selection-end-line="140" selection-end-column="62" />
+            <state vertical-scroll-proportion="0.4248366">
+              <caret line="129" column="44" selection-start-line="129" selection-start-column="44" selection-end-line="129" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChamadasType.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Form/ChamadasType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.875">
+              <caret line="65" column="45" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -81,10 +87,10 @@
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Controller/AgenciasController.php" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Entity/Clientes.php" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Entity/Chamadas.php" />
-        <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Form/ChamadasType.php" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/saveClientes.html.twig" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/newChamada.html.twig" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Controller/DefaultController.php" />
+        <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Form/ChamadasType.php" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/gridChamadas.html.twig" />
       </list>
     </option>
@@ -235,7 +241,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Entity" />
+              <option name="myItemId" value="Form" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -662,14 +668,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Form/ChamadasType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60784316">
-          <caret line="61" column="34" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Entity/Chamadas.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.25">
@@ -686,10 +684,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Form/ChamadasType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.875">
+          <caret line="65" column="45" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/gridChamadas.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.78431374">
-          <caret line="140" column="62" selection-start-line="140" selection-start-column="62" selection-end-line="140" selection-end-column="62" />
+        <state vertical-scroll-proportion="0.4248366">
+          <caret line="129" column="44" selection-start-line="129" selection-start-column="44" selection-end-line="129" selection-end-column="44" />
           <folding />
         </state>
       </provider>
