@@ -21,9 +21,9 @@ class Agencias
     
     /**
      *
-     * @var integer
+     * @var string
      * 
-     * @ORM\Column(name="numero_agencia", type="integer", nullable=true)
+     * @ORM\Column(name="numero_agencia", type="string", nullable=true)
      */
     private $numeroAgencia;    
     
@@ -95,7 +95,7 @@ class Agencias
      * 
      * @return type
      */
-    public function __toString() 
+    public function __toString()
     {
        return $this->getNumeroAgencia() . " : " . $this->getNomeAgencia();
     }
