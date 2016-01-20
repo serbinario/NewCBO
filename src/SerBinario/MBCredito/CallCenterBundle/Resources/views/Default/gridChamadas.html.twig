@@ -127,6 +127,7 @@
         retorno    += "<th>Tipo contratação</th>";
         retorno    += "<th>Convênio</th>";
         retorno    += "<th>Nº do contrato</th>";
+        retorno    += "<th>Data da próxima ligação</th>";
         retorno    += "</tr>";        
         
         for (var i = 0; i < d.chamadas.length; i++) {
@@ -137,6 +138,7 @@
             retorno    += "<td>"+d.chamadas[i].tipoContratacao+"</td>";
             retorno    += "<td>"+d.chamadas[i].convenio+"</td>"
             retorno    += "<td>"+d.chamadas[i].codigoTransacao+"</td>";
+            retorno    += "<td>"+d.chamadas[i].dataProxLigacao+"</td>";
             retorno    += "</tr>";
         }
         

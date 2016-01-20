@@ -58,7 +58,18 @@ class ChamadasType extends AbstractType
                     'widget_col'=> '2',
                     "class"    => " datenottime"
                 )
-            ))           
+            ))
+            ->add('dataProxChamada', 'date', array(
+                'widget' => 'single_text',
+                'required'     => true,
+                'format' => 'dd/MM/yyyy',
+                'label' => 'Data da contratação',
+                'attr' => array(
+                    'placeholder' => 'Data da próxima ligação',
+                    'widget_col'=> '2',
+                    "class"    => " datenottime"
+                )
+            ))
             ->add('tipoContrato', 'entity', array(
                 'label'        => 'Tipos de créditos',
                 'required'     => true,
