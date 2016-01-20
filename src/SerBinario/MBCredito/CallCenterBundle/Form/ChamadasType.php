@@ -63,7 +63,7 @@ class ChamadasType extends AbstractType
                 'widget' => 'single_text',
                 'required'     => true,
                 'format' => 'dd/MM/yyyy',
-                'label' => 'Data da contratação',
+                'label' => 'Data da religação',
                 'attr' => array(
                     'placeholder' => 'Data da próxima ligação',
                     'widget_col'=> '2',
