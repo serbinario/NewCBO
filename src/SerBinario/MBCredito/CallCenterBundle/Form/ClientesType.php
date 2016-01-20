@@ -44,7 +44,6 @@ class ClientesType extends AbstractType
                 'attr'  => array(
                     'placeholder' => 'Conta do cliente',
                     'widget_col'=> '4',
-                    "class"    => "mask_numero"
                 )))
             ->add('telefones', 'bootstrap_collection', array(
                 'label'    => "Telefones: ",
