@@ -15,7 +15,7 @@ class AgenciasType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('numeroAgencia', 'integer', array(
+            ->add('numeroAgencia', 'text', array(
                 'label' => 'Número: ',               
                 'attr'  => array(
                     'placeholder' => 'Número da Agencia',
