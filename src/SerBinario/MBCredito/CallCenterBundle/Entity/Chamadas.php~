@@ -42,6 +42,14 @@ class Chamadas
      * @ORM\Column(name="data_contratado", type="datetime", nullable=true)
      */
     private $dataContratado;
+
+    /**
+     *
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_prox_chamada", type="datetime", nullable=true)
+     */
+    private $dataProxChamada;
     
     /**
      * 
@@ -50,6 +58,14 @@ class Chamadas
      * @ORM\Column(name="status_chamada", type="boolean", nullable=true)
      */
     private $statusChamada;
+    
+     /**
+     *
+     * @var integer
+     * 
+     * @ORM\Column(name="codigo_transacao", type="string", nullable=true)
+     */
+    private $codigoTransacao;
     
     /**
      * @var SerBinario\MBCredito\CallCenterBundle\Entity\Clientes
@@ -73,8 +89,7 @@ class Chamadas
      * @ORM\ManyToOne(targetEntity="Convenios")
      * @ORM\JoinColumn(name="convenio_id", referencedColumnName="id")
      **/
-    private $convenio;
-    
+    private $convenio;    
 
     /**
      * Set id
@@ -235,5 +250,46 @@ class Chamadas
     public function getTipoContrato()
     {
         return $this->tipoContrato;
+    }
+
+    /**
+     * Set convenio
+     *
+     * @param \SerBinario\MBCredito\CallCenterBundle\Entity\Convenios $convenio
+     * @return Chamadas
+     */
+    public function setConvenio(\SerBinario\MBCredito\CallCenterBundle\Entity\Convenios $convenio = null)
+    {
+        $this->convenio = $convenio;
+
+        return $this;
+    }
+
+    /**
+     * Get convenio
+     *
+     * @return \SerBinario\MBCredito\CallCenterBundle\Entity\Convenios 
+     */
+    public function getConvenio()
+    {
+        return $this->convenio;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getCodigoTransacao() 
+    {
+        return $this->codigoTransacao;
+    }
+    
+    /**
+     * 
+     * @param type $codigoTransacao
+     */
+    public function setCodigoTransacao($codigoTransacao) 
+    {
+        $this->codigoTransacao = $codigoTransacao;
     }
 }

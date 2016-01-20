@@ -42,6 +42,14 @@ class Chamadas
      * @ORM\Column(name="data_contratado", type="datetime", nullable=true)
      */
     private $dataContratado;
+
+    /**
+     *
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_prox_chamada", type="datetime", nullable=true)
+     */
+    private $dataProxChamada;
     
     /**
      * 
@@ -283,5 +291,28 @@ class Chamadas
     public function setCodigoTransacao($codigoTransacao) 
     {
         $this->codigoTransacao = $codigoTransacao;
+    }
+
+    /**
+     * Set dataProxChamada
+     *
+     * @param \DateTime $dataProxChamada
+     * @return Chamadas
+     */
+    public function setDataProxChamada($dataProxChamada)
+    {
+        $this->dataProxChamada = $dataProxChamada;
+
+        return $this;
+    }
+
+    /**
+     * Get dataProxChamada
+     *
+     * @return \DateTime 
+     */
+    public function getDataProxChamada()
+    {
+        return $this->dataProxChamada;
     }
 }

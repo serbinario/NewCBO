@@ -85,6 +85,7 @@ class DefaultController extends Controller
                     $arrayChamadas[$contador]['tipoContratacao']  = $chamada->getTipoContrato()->getTipoContrato();
                     $arrayChamadas[$contador]['codigoTransacao']  = $chamada->getCodigoTransacao();
                     $arrayChamadas[$contador]['convenio']         = $chamada->getConvenio()->getConvenio();
+                    $arrayChamadas[$contador]['dataProxLigacao']  = $chamada->getDataProxChamada() ? $chamada->getDataProxChamada()->format("d/m/Y") : "";
 
                     $contador++;
                 }
