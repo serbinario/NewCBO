@@ -10,7 +10,8 @@ security:
                 property: username
 
     role_hierarchy:
-            ROLE_ADMIN:       ROLE_USER
+            ROLE_GERENTE:     ROLE_OPERADOR
+            ROLE_ADMIN:       ROLE_GERENTE
             ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     firewalls:
@@ -32,12 +33,12 @@ security:
 
     access_control:
         - { path: ^/user/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/user/index, roles: ROLE_USER }
+        - { path: ^/user/index, roles: ROLE_OPERADOR }
 #        - { path: ^/user/teste, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/cbo/*, roles: ROLE_ADMIN }
-        - { path: ^/convenio/*, roles: ROLE_USER }
-        - { path: ^/agencia/*, roles: ROLE_USER }
-        - { path: ^/callcenter/*, roles: ROLE_USER }
+        - { path: ^/convenio/*, roles: ROLE_OPERADOR }
+        - { path: ^/agencia/*, roles: ROLE_OPERADOR }
+        - { path: ^/callcenter/*, roles: ROLE_OPERADOR }
         - { path: ^/agentes/*, roles: ROLE_ADMIN }
 
    

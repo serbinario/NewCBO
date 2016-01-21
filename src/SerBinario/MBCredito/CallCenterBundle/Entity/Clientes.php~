@@ -37,9 +37,9 @@ class Clientes
     
     /**
      *
-     * @var integer
+     * @var string
      * 
-     * @ORM\Column(name="conta", type="integer", nullable=true)
+     * @ORM\Column(name="conta", type="string", nullable=true)
      */
     private $conta; 
     
@@ -64,6 +64,14 @@ class Clientes
      * @ORM\JoinColumn(name="agencia_id", referencedColumnName="id")
      **/
     private $agencia;
+
+    /**
+     * @var SerBinario\MBCredito\UserBundle\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="SerBinario\MBCredito\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     **/
+    private $usuario;
     
     /**
      * Constructor
