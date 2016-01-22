@@ -174,6 +174,6 @@ class Operadores
      */
     public function __toString()
     {
-        return $this->getNomeOperadores();
+        return $this->getNomeOperadores() . "";
     }
 }
