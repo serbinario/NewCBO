@@ -3,12 +3,13 @@
 namespace SerBinario\MBCredito\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\Role\RoleInterface;
 
 /**
  * @ORM\Table(name="roles")
  * @ORM\Entity(repositoryClass="SerBinario\MBCredito\UserBundle\Entity\RoleRepository")
  */
-class Role
+class Role implements RoleInterface
 {
     /**
      * @ORM\Column(type="integer")
@@ -53,5 +54,13 @@ class Role
     public function getRole()
     {
         return $this->role;
+    }
+
+    /**
+     *
+     */
+    public function __toString()
+    {
+        return $this->getRole();
     }
 }

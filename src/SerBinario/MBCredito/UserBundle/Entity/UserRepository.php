@@ -69,4 +69,30 @@ class UserRepository extends EntityRepository implements UserProviderInterface
         return $this->getEntityName() === $class
         || is_subclass_of($class, $this->getEntityName());
     }
+
+    /**
+     * @param User $entity
+     * @return User
+     */
+    public function save(User $entity)
+    {
+        $manager = $this->getEntityManager();
+        $manager->persist($entity);
+        $manager->flush();
+
+        return $entity;
+    }
+
+    /**
+     * @param User $entity
+     * @return User
+     */
+    public function update(User $entity)
+    {
+        $manager = $this->getEntityManager();
+        $manager->merge($user);
+        $manager->flush();
+
+        return $entity;
+    }
 }

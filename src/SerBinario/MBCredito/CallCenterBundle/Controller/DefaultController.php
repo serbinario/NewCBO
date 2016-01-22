@@ -28,13 +28,26 @@ class DefaultController extends Controller
                 "a.agencia"
                 );
 
-            $entityJOIN = array();             
-            $chamadasArray        = array();
-            $parametros           = $request->request->all();
-            $entity               = "SerBinario\MBCredito\CallCenterBundle\Entity\Clientes"; 
-            $columnWhereMain      = "";
-            $whereValueMain       = "";
-            $whereFull            = "";
+            $entityJOIN       = array();
+            $chamadasArray    = array();
+            $parametros       = $request->request->all();
+            $entity           = "SerBinario\MBCredito\CallCenterBundle\Entity\Clientes";
+            $columnWhereMain  = "";
+            $whereValueMain   = "";
+            $whereFull        = "";
+
+            #Verificando o tipo de usuário
+            if ($this->get('security.authorization_checker')->isGranted('ROLE_OPERADOR')
+                && !$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')
+                && !$this->get('security.authorization_checker')->isGranted('ROLE_GERENTE')) {
+                $entityJOIN[] = "usuario";
+
+                #Recuperando o usuário
+                $user         = $this->getUser();
+
+                #Preparando a condição
+                $whereFull    = "b.id = {$user->getId()}";
+            }
             
             $gridClass = new GridClass($this->getDoctrine()->getManager(), 
                     $parametros,
@@ -45,8 +58,17 @@ class DefaultController extends Controller
                     $whereValueMain,
                     $whereFull);
 
-            $resultCliente  = $gridClass->builderQuery();    
-            $countTotal     = $gridClass->getCount();
+            $resultCliente  = $gridClass->builderQuery();
+
+            #Verificando o tipo de usuário
+            if ($this->get('security.authorization_checker')->isGranted('ROLE_OPERADOR')
+                && !$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')
+                && !$this->get('security.authorization_checker')->isGranted('ROLE_GERENTE')) {
+                $countTotal = $gridClass->getCountByWhereFull(array("b" => "usuario"), array(), $whereFull);
+            } else {
+                $countTotal = $gridClass->getCount();
+            }
+
             $countEventos   = count($resultCliente);
 
             for($i=0;$i < $countEventos; $i++)
@@ -57,6 +79,7 @@ class DefaultController extends Controller
                 $chamadasArray[$i]['cpf']       = $resultCliente[$i]->getCpf();
                 $chamadasArray[$i]['conta']     = $resultCliente[$i]->getConta();
                 $chamadasArray[$i]['agencia']   = $resultCliente[$i]->getAgencia()->getNumeroAgencia();
+                $chamadasArray[$i]['operador']  = $resultCliente[$i]->getUsuario()->getOperador()->getNomeOperadores();
 
                 #Tratando os telefones
                 $telefones                      = $resultCliente[$i]->getTelefones() ?: [];
@@ -132,7 +155,13 @@ class DefaultController extends Controller
             if($form->isValid()) {
                 #Recuperando os dados
                 $cliente = $form->getData();
-                
+
+                #Recuperando o usuário
+                $user    = $this->getUser();
+
+                #Setando o usuário
+                $cliente->setUsuario($user);
+
                 #Recuoerando a chamada
                 $chamada = $cliente->getChamadas();
 

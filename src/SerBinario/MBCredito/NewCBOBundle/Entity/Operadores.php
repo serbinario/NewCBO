@@ -168,4 +168,12 @@ class Operadores
     {
         $this->transacoes->removeElement($transacoes);
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getNomeOperadores();
+    }
 }

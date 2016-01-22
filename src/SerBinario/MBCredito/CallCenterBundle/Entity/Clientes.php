@@ -64,6 +64,14 @@ class Clientes
      * @ORM\JoinColumn(name="agencia_id", referencedColumnName="id")
      **/
     private $agencia;
+
+    /**
+     * @var SerBinario\MBCredito\UserBundle\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="SerBinario\MBCredito\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     **/
+    private $usuario;
     
     /**
      * Constructor
@@ -277,5 +285,28 @@ class Clientes
     public function getAgencia()
     {
         return $this->agencia;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param \SerBinario\MBCredito\UserBundle\Entity\User $usuario
+     * @return Clientes
+     */
+    public function setUsuario(\SerBinario\MBCredito\UserBundle\Entity\User $usuario = null)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \SerBinario\MBCredito\UserBundle\Entity\User 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
 }

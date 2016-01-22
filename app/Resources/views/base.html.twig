@@ -80,6 +80,19 @@
                                 </ul>                                
                             </li>
                         </ul>
+
+                        {% if is_granted('ROLE_GERENTE') %}
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">CONFIGURAÇÕES <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            <a href="{{ path('gridUser') }}">GERENCIAMENTO DE USUÁRIOS</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        {% endif %}
                                     
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="{{path('logout')}}">SAIR</a></li>
