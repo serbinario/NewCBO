@@ -151,7 +151,7 @@ class DefaultController extends Controller
 
                 #Tratamento de exceções
                 try {
-                    $this->getDoctrine()->getRepository("UserBundle:User")->save($user);
+                    $this->getDoctrine()->getRepository(User::class)->save($user);
 
                     $this->get('session')->getFlashBag()->add('success', 'Usuário cadastrado com sucesso');
                 } catch (\Exception $ex) {
@@ -187,7 +187,7 @@ class DefaultController extends Controller
     public function updateUserAction(Request $request, $id)
     {
         #Recuperando o usuário
-        $user        = $this->getDoctrine()->getRepository("UserBundle:User")->find($id);
+        $user        = $this->getDoctrine()->getRepository(User::class)->find($id);
         $oldPassword = $user->getPassword();
         $user->setPassword("");
 
@@ -217,12 +217,12 @@ class DefaultController extends Controller
 
                 #Tratamento de exceções
                 try {
-                    $this->getDoctrine()->getRepository("UserBundle:User")->update($user);
+                    $this->getDoctrine()->getRepository(User::class)->update($user);
 
                     $this->get('session')->getFlashBag()->add('success', 'Usuário cadastrado com sucesso');
                 } catch (\Exception $ex) {
                     #Verificando a unicidade
-                    if($ex->getPrevious()->getCode() == 23000) {
+                    if($ex->getPrevious() != null && $ex->getPrevious()->getCode() == 23000) {
                         $this->get('session')->getFlashBag()->add('danger', 'Email o login já existentes');
                     } else {
                         $this->get('session')->getFlashBag()->add('danger', 'Erro ao cadastrar o usuário, tente novamente');

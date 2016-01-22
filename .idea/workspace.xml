@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="94ec9ae4-9987-4b05-b22a-42d67bfc7a1d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/MBCredito/UserBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/SerBinario/MBCredito/UserBundle/Controller/DefaultController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/MBCredito/UserBundle/Entity/UserRepository.php" afterPath="$PROJECT_DIR$/src/SerBinario/MBCredito/UserBundle/Entity/UserRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="NewCBOWeb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,11 +29,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="UserRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/UserBundle/Entity/UserRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-18.166666">
+              <caret line="92" column="31" selection-start-line="92" selection-start-column="31" selection-end-line="92" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/UserBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.1651375">
-              <caret line="153" column="73" selection-start-line="153" selection-start-column="73" selection-end-line="153" selection-end-column="73" />
+            <state vertical-scroll-proportion="-1.9266055">
+              <caret line="153" column="67" selection-start-line="153" selection-start-column="67" selection-end-line="153" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -78,7 +90,6 @@
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/NewCBOBundle/DependencyInjection/NewCBOExtension.php" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/DependencyInjection/CallCenterExtension.php" />
-        <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/UserBundle/Entity/UserRepository.php" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/UserBundle/Resources/views/Default/gridUser.html.twig" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/UserBundle/Resources/views/Default/saveAgencia.html.twig" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/UserBundle/Resources/views/Default/updateUser.html.twig" />
@@ -89,6 +100,7 @@
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/NewCBOBundle/Entity/Operadores.php" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/UserBundle/Form/UserType.php" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/UserBundle/Controller/DefaultController.php" />
+        <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/UserBundle/Entity/UserRepository.php" />
       </list>
     </option>
   </component>
@@ -186,6 +198,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="UserBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NewCBOWeb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NewCBOWeb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SerBinario" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MBCredito" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Entity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -602,13 +644,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/UserBundle/Entity/UserRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6146789">
-          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/services.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -710,10 +745,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/UserBundle/Entity/UserRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.166666">
+          <caret line="92" column="31" selection-start-line="92" selection-start-column="31" selection-end-line="92" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/UserBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.1651375">
-          <caret line="153" column="73" selection-start-line="153" selection-start-column="73" selection-end-line="153" selection-end-column="73" />
+        <state vertical-scroll-proportion="-1.9266055">
+          <caret line="153" column="67" selection-start-line="153" selection-start-column="67" selection-end-line="153" selection-end-column="67" />
           <folding />
         </state>
       </provider>

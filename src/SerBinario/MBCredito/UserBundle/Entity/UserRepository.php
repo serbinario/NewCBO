@@ -90,7 +90,7 @@ class UserRepository extends EntityRepository implements UserProviderInterface
     public function update(User $entity)
     {
         $manager = $this->getEntityManager();
-        $manager->merge($user);
+        $manager->merge($entity);
         $manager->flush();
 
         return $entity;
