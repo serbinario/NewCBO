@@ -109,4 +109,34 @@ class Lojas
     {
         return $this->transacoes;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->transacoes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add transacoes
+     *
+     * @param \SerBinario\MBCredito\NewCBOBundle\Entity\Transacoes $transacoes
+     * @return Lojas
+     */
+    public function addTransaco(\SerBinario\MBCredito\NewCBOBundle\Entity\Transacoes $transacoes)
+    {
+        $this->transacoes[] = $transacoes;
+
+        return $this;
+    }
+
+    /**
+     * Remove transacoes
+     *
+     * @param \SerBinario\MBCredito\NewCBOBundle\Entity\Transacoes $transacoes
+     */
+    public function removeTransaco(\SerBinario\MBCredito\NewCBOBundle\Entity\Transacoes $transacoes)
+    {
+        $this->transacoes->removeElement($transacoes);
+    }
 }

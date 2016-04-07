@@ -10,7 +10,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Entity
  * @Vich\Uploadable
  */
-class ArquivoCBF 
+class ArquivoCBG
 {
     /**
      * @ORM\Id

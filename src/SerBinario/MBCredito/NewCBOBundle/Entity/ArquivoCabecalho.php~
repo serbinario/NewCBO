@@ -300,4 +300,27 @@ class ArquivoCabecalho
 
 
 
+
+    /**
+     * Add transacoes
+     *
+     * @param \SerBinario\MBCredito\NewCBOBundle\Entity\Transacoes $transacoes
+     * @return ArquivoCabecalho
+     */
+    public function addTransaco(\SerBinario\MBCredito\NewCBOBundle\Entity\Transacoes $transacoes)
+    {
+        $this->transacoes[] = $transacoes;
+
+        return $this;
+    }
+
+    /**
+     * Remove transacoes
+     *
+     * @param \SerBinario\MBCredito\NewCBOBundle\Entity\Transacoes $transacoes
+     */
+    public function removeTransaco(\SerBinario\MBCredito\NewCBOBundle\Entity\Transacoes $transacoes)
+    {
+        $this->transacoes->removeElement($transacoes);
+    }
 }
