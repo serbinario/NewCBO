@@ -1,0 +1,44 @@
+# app/config/security.yml
+security:
+    encoders:
+        SerBinario\MBCredito\UserBundle\Entity\User:
+            algorithm: bcrypt
+    providers:
+        serbinario_provider:
+            entity:
+                class: UserBundle:User
+                property: username
+
+    role_hierarchy:
+            ROLE_GERENTE:     ROLE_OPERADOR
+            ROLE_ADMIN:       ROLE_GERENTE
+            ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        default:
+            anonymous:  ~
+            pattern:    ^/
+            http_basic: ~
+            provider:   serbinario_provider
+            form_login:
+                login_path: /user/login
+                check_path: /user/login_check
+            logout:
+                path:   /user/logout
+                target: /
+
+    access_control:
+        - { path: ^/user/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/index, roles: ROLE_OPERADOR }
+#        - { path: ^/user/teste, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/cbo/*, roles: ROLE_ADMIN }
+        - { path: ^/convenio/*, roles: ROLE_OPERADOR }
+        - { path: ^/agencia/*, roles: ROLE_OPERADOR }
+        - { path: ^/callcenter/*, roles: ROLE_OPERADOR }
+        - { path: ^/agentes/*, roles: ROLE_ADMIN }
+
+   

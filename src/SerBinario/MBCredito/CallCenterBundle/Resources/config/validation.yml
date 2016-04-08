@@ -1,0 +1,37 @@
+#Validação da classe Clientes
+SerBinario\MBCredito\CallCenterBundle\Entity\Clientes:
+    properties:
+        nome:           
+            - NotBlank:
+                message: Nome do cliente não informado.
+        cpf:           
+            - NotBlank:
+                message: CPF do cliente não informado.
+            - Length:
+                min: 11
+                max: 15
+                minMessage: "Quantidade de caracteres não permitida, {{ limit }} a quantidade aceitável"
+                maxMessage: "Quantidade de caracteres não permitida, {{ limit }} a quantidade aceitável"
+        agencia:           
+            - NotBlank:
+                message: Agência não informada.             
+        conta:           
+            - NotBlank:
+                message: Conta não informada.             
+
+#Validação da classe Chamadas
+SerBinario\MBCredito\CallCenterBundle\Entity\Clientes:
+    prazo:
+        - Type:
+            type: integer
+            message: O valor informado para Prazo é inválido. 
+        - NotBlank:
+                message: Prazo do cliente não informado.
+    valorContratado:
+        - NotBlank:
+                message: Valor Contratado do cliente não informado.
+    dataContratado:
+        - DateTime: 
+            message: Valor informado para data é inválido.
+             
+        

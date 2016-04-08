@@ -1,0 +1,106 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {{parent()}}
+    <style type="text/css" class="init">
+        td.details-control {
+            background: url({{asset("imagens/icone-produto-plus.png")}}) no-repeat center center;
+            cursor: pointer;
+        }
+        tr.details td.details-control {
+            background: url({{asset("imagens/icone-produto-minus.png")}}) no-repeat center center;
+        }
+
+        a.editar {
+            background: url({{asset("imagens/icone-editar.png")}}) no-repeat 0 0;
+            width: 22px;
+        }
+
+        a.visualizar {
+            background: url({{asset("imagens/icone-visualizar.png")}}) no-repeat 0 0;
+            width: 23px;
+        }
+
+        a.excluir {
+            background: url({{asset("imagens/icone-excluir.png")}}) no-repeat 0 0;
+            width: 21px;
+        }
+
+        td.bt {
+            padding: 10px 0;
+            width: 126px;
+        }
+
+        td.bt a {
+            float: left;
+            height: 22px;
+            margin: 0 10px;
+        }
+        
+    </style>
+
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="container">
+        <div id="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <fieldset>
+                        {% for label, flashes in app.session.flashbag.all %}
+                            {% for flash in flashes %}
+                                <div class="alert alert-dismissable alert-{{ label }}">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    {{ flash }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        <legend>Importar Arquivo</legend>                           
+                        <div class="col-md-13 column">
+                            {{ form_start(form, { 'style': 'horizontal' }) }}                    
+                                {{ form_widget(form.imageFile) }}                               
+                            {{ form_end(form) }}
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <fieldset>
+                        <legend>Últimos Arquivos Importados</legend>           
+                            <table class="table table-bordered">
+                                <thead>
+                                    <th>Nome do Arquivo</th>
+                                    <th>Data da Importação</th>
+                                    <th>Data do Arquivo</th>  
+                                    <th>Ação</th>
+                                </thead>
+                                <tbody>
+                                    
+                                    {% for arquivo in arquivos %}
+                                        <tr>
+                                            <td>{{ arquivo.arquivoCBF.imageName }}</td>
+                                            <td>{{ arquivo.arquivoCBF.updatedAt|date('d/m/Y') }}</td>
+                                            <td>{{ arquivo.dataArquivoCabecalho|date('d/m/Y') }}</td>
+                                            <td><a href="delete/{{arquivo.idArquivoCabecalho}}">Excluir</a></td>
+                                        </tr>
+                                    {% endfor %}
+                                    
+                                </tbody>
+                                <tfoot>
+                                    <th>Nome do Arquivo</th>
+                                    <th>Data da Importação</th>
+                                    <th>Data do Arquivo</th>
+                                    <th>Ação</th>
+                                </tfoot>
+                            </table>                        
+                    </fieldset>
+                </div>
+            </div>
+                        
+        </div>
+    </div>
+{% endblock %}

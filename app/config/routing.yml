@@ -1,0 +1,44 @@
+root:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /user/index
+        permanent: true
+
+new_cbo:
+    resource: "@NewCBOBundle/Controller/"
+    type:     annotation
+    prefix:   /cbo
+
+new_cbg:
+    resource: "@NewCBOBundle/Controller/CBGController.php"
+    type:     annotation
+    prefix:   /cbg
+
+convenio:
+    resource: "@CallCenterBundle/Controller/ConveniosController.php"
+    type:     annotation
+    prefix:   /convenio
+
+agencia:
+    resource: "@CallCenterBundle/Controller/AgenciasController.php"
+    type:     annotation
+    prefix:   /agencia
+
+call_center:
+    resource: "@CallCenterBundle/Controller/"
+    type:     annotation
+    prefix:   /callcenter
+
+agentes:
+    resource: "@NewCBOBundle/Controller/AgentesController.php"
+    prefix:   /agentes
+    type:     annotation
+
+security:
+    resource: "@UserBundle/Controller/"
+    type:     annotation
+    prefix:   /user
+
+
+

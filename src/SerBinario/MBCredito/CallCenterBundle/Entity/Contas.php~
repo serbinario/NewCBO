@@ -1,0 +1,29 @@
+<?php
+namespace SerBinario\MBCredito\CallCenterBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Table(name="contas")
+ * @ORM\Entity
+ */
+class Contas 
+{
+    /**
+     *
+     * @var integer
+     * 
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     */
+    private $id; 
+    
+    /**
+     *
+     * @var integer
+     * 
+     * @ORM\Column(name="numero_conta", type="integer", nullable=true)
+     */
+    private $numeroConta;    
+}
