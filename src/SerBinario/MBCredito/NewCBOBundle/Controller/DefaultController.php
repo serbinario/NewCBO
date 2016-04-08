@@ -250,6 +250,7 @@ class DefaultController extends Controller
                         $totalLiquido += $valorLiquido;
                         $totalBruto   += $valorBruto;
 
+                        # Contando por estados
                         switch($respotaliquida->getlojasLojas()->getCodigoLojas()) {
                             case 1000 : $valorTotalPeBruto += $valorBruto; $valorTotalPeLiquido += $valorLiquido;break;
                             case 1001 : $valorTotalAlBruto += $valorBruto; $valorTotalAlLiquido += $valorLiquido;break;
