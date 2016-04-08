@@ -74,11 +74,12 @@ class DefaultController extends Controller
                 
                 #Verificando a resposta
                 if(!$result) {
+                    #Mensagem de erro
                     $this->get('session')->getFlashBag()->add('danger', "Erro ao importar o arquivo!");
+                } else {
+                    #Mensagem de sucesso
+                    $this->get('session')->getFlashBag()->add('success', "Arquivo importado com sucesso!");
                 }
-                
-                #Mensagem de sucesso
-                $this->get('session')->getFlashBag()->add('success', "Arquivo importado com sucesso!");
                 
                 #Criando o formulário
                 $form = $this->createForm(new ArquivoCBFType());

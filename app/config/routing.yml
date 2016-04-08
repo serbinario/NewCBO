@@ -10,6 +10,11 @@ new_cbo:
     type:     annotation
     prefix:   /cbo
 
+new_cbg:
+    resource: "@NewCBOBundle/Controller/CBGController.php"
+    type:     annotation
+    prefix:   /cbg
+
 convenio:
     resource: "@CallCenterBundle/Controller/ConveniosController.php"
     type:     annotation

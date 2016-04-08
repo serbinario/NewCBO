@@ -1,0 +1,144 @@
+<?php
+
+namespace SerBinario\MBCredito\NewCBOBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Class TransacoesCBG
+ * @package SerBinario\MBCredito\NewCBOBundle\Entity
+ *
+ * @ORM\Entity
+ * @ORM\Table(name="transacoes_cbg")
+ */
+class TransacoesCBG
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codigo_gestor_rede", length=9, nullable=true)
+     */
+    private $codigoGestorRede;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codigo_correspondente", type="string", length=9, nullable=true)
+     */
+    private $codigoCorrespondente;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codigo_loja", type="string", length=9, nullable=true)
+     */
+    private $codigoLoja;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="agencia", type="string", length=9, nullable=true)
+     */
+    private $agencia;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numero_contrato", type="string", length=9, nullable=true)
+     */
+    private $numeroContrato;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="chave_operador", type="string", length=8, nullable=true)
+     */
+    private $chaveOperador;
+
+    /**
+     * @var decimal
+     *
+     * @ORM\Column(name="valor_parcela", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $valorParcela;
+
+    /**
+     * @var \DateTime
+     *
+     * ORM\Column(name="data_fim", type="date", nullable=true)
+     */
+    private $dataFim;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numero_parcela", type="integer", nullable=true)
+     */
+    private $numeroParcela;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="quantidade_parcela", type="integer", nullable=true)
+     */
+    private $quantidadeParcela;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codigo_estado_operacao", type="string", length=4, nullable=true)
+     */
+    private $codigoEstadoOperacao;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codigo_estado_pagamento", type="string", length=4, nullable=true)
+     */
+    private $codigoEstadoPagamento;
+
+    /**
+     * @var \ArquivoCabecalho
+     *
+     * @ORM\ManyToOne(targetEntity="ArquivoCabecalhoCBG", inversedBy="transacoesCBG")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="arquivo_cabecalhocbg_id", referencedColumnName="id")
+     * })
+     */
+    private $arquivoCabecalhoCBG;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
