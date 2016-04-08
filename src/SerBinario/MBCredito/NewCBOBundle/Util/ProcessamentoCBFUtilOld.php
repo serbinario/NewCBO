@@ -49,13 +49,8 @@ class ProcessamentoCBFUtil
            $line             = $linesObject->offsetGet($i);     
            #Recuperando o tipo da linha
            $typeLine         = \substr($line, 0, 1);
-
-           $cabecallho = $arquivoCabecalho->getNomeArquivoCabecalho();
-
-
+           
            #Tratamento do cabeçalho do arquivo
-
-
            if($typeLine == 0) {
                $arquivoCabecalho->setBancoArquivoCabecalho(substr($line, 1, 3));
                $arquivoCabecalho->setDataArquivoCabecalho(\DateTime::createFromFormat('Y/m/d', substr($line, 4,4) . "/" . substr($line, 8,2) . "/" .substr($line, 10,2)));
@@ -64,10 +59,9 @@ class ProcessamentoCBFUtil
                $arquivoCabecalho->setSeqCorrespondenteArquivoCabecalho(substr($line, 27,9));
                $arquivoCabecalho->setCodMciCorrespondenteArquivoCabecalho(substr($line, 36,9));
            }
-
-           //if( $cabecallho == 'CBF801')
+           
            #Tratamento das transações
-           if(($typeLine == 1 && $cabecallho == 'CBF800') || ($typeLine == 2 && $cabecallho == 'CBF801') ) {
+           if($typeLine == 1) {
                $transacoes->setBancoTransacoes(substr($line, 1,3));
                $transacoes->setBancoTransacoes(substr($line, 1,3));
                $transacoes->setDataTransacoes(\DateTime::createFromFormat('Y/m/d', substr($line, 4,4) . "/" . substr($line, 8,2) . "/" .substr($line, 10,2)));
@@ -99,7 +93,7 @@ class ProcessamentoCBFUtil
            }
            
            #Tratamento da operação
-           if(($typeLine == 2 && $cabecallho == 'CBF800') || ($typeLine == 3 && $cabecallho == 'CBF801')) {
+           if($typeLine == 2) {
                #Recuperando a última transação armazenada
                $transacaoCorrente = $arquivoCabecalho->getTransacoes()->last();
                
@@ -147,4 +141,3 @@ class ProcessamentoCBFUtil
        }
    }
 }
-
