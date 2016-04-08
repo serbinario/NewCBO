@@ -43,7 +43,7 @@ class CBGRN
     {
         try {
             #Recuperando as transações
-            $transacoes = new \ArrayObject($arquivoCabecalhoCBG->getTransacoesCBG()->toArray());
+            $transacoes = new \ArrayObject($arquivoCabecalhoCBG->getTransacoesCBG());
 
             #Removendo as transações
             #para salvar o arquivo separadamento no banco
@@ -57,7 +57,7 @@ class CBGRN
             for($i = 0; $i < $transacoes->count(); $i++) {
                 #Recuperando objetos uteis
                 $transacaoCBG   = $transacoes->offsetGet($i);
-
+                $transacaoCBG->setArquivoCabecalhoCBG($arquivoCabecalhoCBG);
 //                #Recuperando o código da transação
 //                $codOperacao = $transacaoCBG->getNumeroPropostaTransacoesCBG();
 

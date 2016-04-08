@@ -47,7 +47,31 @@ class ProcessamentoCBGUtil
 
             #Tratamento das transações
             if($typeLine == 1) {
-                
+                $transacoesCBG->setCodigoGestorRede(substr($line, 1, 9));
+                $transacoesCBG->setCodigoCorrespondente(substr($line, 10, 9));
+                $transacoesCBG->setCodigoLoja(substr($line, 19, 9));
+                $transacoesCBG->setAgencia(substr($line, 28, 9));
+                $transacoesCBG->setNumeroContrato(substr($line, 37, 9));
+                $transacoesCBG->setChaveOperador(substr($line, 46, 8));
+
+                ########## Tratamento do valor da parcela ################
+                $valor    = substr($line, 54, 15);
+                $precisao = substr($valor, 0, 13);
+                $escala   = substr($valor, 13, 2);
+                $transacoesCBG->setValorParcela($precisao. "." . $escala);
+                ##########################################################
+
+                ######### Tratamento data fim ############################
+                $data     = substr($line, 69, 10);
+                $dataFim  = \DateTime::createFromFormat('Y/m/d', substr($data, 0,2) . "/" . substr($data, 4,2) . "/" .substr($line, 7,4));
+                $transacoesCBG->setDataFim($dataFim);
+                ##########################################################
+
+                $transacoesCBG->setNumeroParcela(substr($line, 79, 4));
+                $transacoesCBG->setQuantidadeParcela(substr($line, 83, 4));
+                $transacoesCBG->setCodigoEstadoOperacao(substr($line, 87, 4));
+                $transacoesCBG->setCodigoEstadoPagamento(substr($line, 91, 4));
+
                 #Adicionando a transação ao objeto do arquivo
                 $arquivoCabecalhoCBG->addTransacoesCBG($transacoesCBG);
             }            

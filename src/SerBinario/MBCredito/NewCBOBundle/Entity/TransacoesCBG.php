@@ -401,4 +401,27 @@ class TransacoesCBG
     {
         return $this->arquivoCabecalhoCBG;
     }
+
+    /**
+     * Set dataFim
+     *
+     * @param string $dataFim
+     * @return TransacoesCBG
+     */
+    public function setDataFim($dataFim)
+    {
+        $this->dataFim = $dataFim;
+
+        return $this;
+    }
+
+    /**
+     * Get dataFim
+     *
+     * @return string
+     */
+    public function getDataFim()
+    {
+        return $this->dataFim;
+    }
 }
