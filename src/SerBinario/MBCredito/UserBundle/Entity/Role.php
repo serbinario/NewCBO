@@ -53,6 +53,7 @@ class Role implements RoleInterface
      */
     public function getRole()
     {
+        # retorno
         return $this->role;
     }
 
@@ -61,6 +62,16 @@ class Role implements RoleInterface
      */
     public function __toString()
     {
-        return $this->getRole();
+        # Cortando a string
+        $explode = explode("_", $this->role);
+
+        # Verificando o explode
+        if(count($explode) > 0) {
+            # Retorno
+            return $explode[1];
+        }
+
+        # retorno
+        return $this->role;
     }
 }
