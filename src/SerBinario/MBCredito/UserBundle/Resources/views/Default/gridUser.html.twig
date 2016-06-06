@@ -60,6 +60,7 @@
                             <thead>
                                 <tr>                                    
                                     <th>Login</th>
+                                    <th>Nome</th>
                                     <th>Email</th>
                                     <th>Acão</th>
                                 </tr>
@@ -68,6 +69,7 @@
                             <tfoot>
                                 <tr>
                                     <th>Login</th>
+                                    <th>Nome</th>
                                     <th>Email</th>
                                     <th>Acão</th>
                                 </tr>
@@ -100,6 +102,7 @@
                             },
                             "columns": [
                                 {"data": "username"},
+                                {"data": "operadorNome"},
                                 {"data": "email"},
                                 {
                                     "class": "bt",
@@ -110,7 +113,7 @@
                                     }
                                 }
                             ],
-                            "order": [[0, 'asc']],
+                            "order": [[2, 'asc']],
                             language: {
                                 "sEmptyTable": "Nenhum registro encontrado",
                                 "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",

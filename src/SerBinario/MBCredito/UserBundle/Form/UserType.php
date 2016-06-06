@@ -5,6 +5,7 @@ namespace SerBinario\MBCredito\UserBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Doctrine\ORM\EntityRepository;
 
 class UserType extends AbstractType
 {
@@ -54,7 +55,11 @@ class UserType extends AbstractType
                 'required'     => false,
                 'attr' => array(
                     'widget_col'=> '4',
-                )
+                ),
+                'query_builder' => function(EntityRepository $er ) {
+                    return $er->createQueryBuilder('o')
+                        ->orderBy('o.nomeOperadores', 'ASC');
+                }
             ))
             ->add('actions', 'form_actions', [
                 'buttons' => [

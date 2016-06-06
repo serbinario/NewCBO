@@ -74,10 +74,11 @@ class DefaultController extends Controller
 
             $columns = array(
                 "a.username",
-                "a.email"
+                "a.email",
+                "b.nomeOperadores"
             );
 
-            $entityJOIN           = array();
+            $entityJOIN           = array("operador");
             $agenciasArray        = array();
             $parametros           = $request->request->all();
             $entity               = "SerBinario\\MBCredito\\UserBundle\\Entity\\User";
@@ -100,10 +101,11 @@ class DefaultController extends Controller
 
             for($i=0;$i < $countEventos; $i++)
             {
-                $agenciasArray[$i]['DT_RowId']  = "row_".$resultAgencias[$i]->getId();
-                $agenciasArray[$i]['id']        = $resultAgencias[$i]->getId();
-                $agenciasArray[$i]['username']  = $resultAgencias[$i]->getUsername();
-                $agenciasArray[$i]['email']     = $resultAgencias[$i]->getEmail();
+                $agenciasArray[$i]['DT_RowId']     = "row_".$resultAgencias[$i]->getId();
+                $agenciasArray[$i]['id']           = $resultAgencias[$i]->getId();
+                $agenciasArray[$i]['username']     = $resultAgencias[$i]->getUsername();
+                $agenciasArray[$i]['email']        = $resultAgencias[$i]->getEmail();
+                $agenciasArray[$i]['operadorNome'] = $resultAgencias[$i]->getOperador()->getNomeOperadores();
             }
 
             //Se a variável $sqlFilter estiver vazio
