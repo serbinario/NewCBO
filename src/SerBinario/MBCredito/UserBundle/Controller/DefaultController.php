@@ -80,7 +80,7 @@ class DefaultController extends Controller
             $entityJOIN           = array();
             $agenciasArray        = array();
             $parametros           = $request->request->all();
-            $entity               = "SerBinario\MBCredito\UserBundle\Entity\User";
+            $entity               = "SerBinario\\MBCredito\\UserBundle\\Entity\\User";
             $columnWhereMain      = "";
             $whereValueMain       = "";
             $whereFull            = "";
@@ -173,7 +173,6 @@ class DefaultController extends Controller
                 #Messagem de retorno
                 $this->get('session')->getFlashBag()->add('danger', (string) $form->getErrors());
             }
-
         }
 
         #Retorno
@@ -238,6 +237,59 @@ class DefaultController extends Controller
                 #Retorno
                 return array("form" => $form->createView());
                 //return $this->redirectToRoute("gridAgencias");
+            } else {
+                #Messagem de retorno
+                $this->get('session')->getFlashBag()->add('danger', (string) $form->getErrors());
+            }
+        }
+
+        #Retorno
+        return array("form" => $form->createView());
+    }
+
+    /**
+     * @Route("/updatePassword/{id}", name="updatePassword")
+     * @Template()
+     */
+    public function updatePasswordAction(Request $request, $id="")
+    {
+        #Recuperando o usuário
+        $user        = $this->get('security.context')->getToken()->getUser();
+        $oldPassword = $user->getPassword();
+        $user->setPassword("");
+
+        #Criando o formulário
+        $form = $this->createForm(new UserType(), $user);
+
+        #Verficando se é uma submissão
+        if ($request->getMethod() === "POST") {
+            #Repasando a requisição
+            $form->handleRequest($request);
+
+            #Verifica se os dados são válidos
+            if ($form->isValid()) {
+                #Recuperando os dados
+                $user = $form->getData();
+
+                #tratando a senha
+                if(!empty($user->getPassword())) {
+                    $encoder     = $this->container->get('security.password_encoder');
+                    $newPassword = $user->getPassword();
+                    $password    = $encoder->encodePassword($user, $newPassword);
+
+                    $user->setPassword($password);
+                } else {
+                    $user->setPassword($oldPassword);
+                }
+
+                #Tratamento de exceções
+                try {
+                    $this->getDoctrine()->getRepository(User::class)->update($user);
+
+                    $this->get('session')->getFlashBag()->add('success', 'Senha alterada com sucesso');
+                } catch (\Exception $ex) {
+                    $this->get('session')->getFlashBag()->add('danger', 'Erro ao alterar a senha, tente novamente');
+                }
             } else {
                 #Messagem de retorno
                 $this->get('session')->getFlashBag()->add('danger', (string) $form->getErrors());
