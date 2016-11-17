@@ -103,7 +103,7 @@ class DefaultController extends Controller
     {
         $manager = $this->getDoctrine()->getManager();
         $entity  = $manager->find("NewCBOBundle:ArquivoCabecalho", $id);
-        
+        dd($entity);
         $manager->remove($entity);
         $manager->flush();
         
