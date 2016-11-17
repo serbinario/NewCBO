@@ -104,7 +104,7 @@ class ArquivoCabecalhoDAO
                             ->from("SerBinario\MBCredito\NewCBOBundle\Entity\ArquivoCabecalho", "a")
                             ->join("a.arquivoCBF", "b")                            
                             ->orderBy("a.idArquivoCabecalho", "DESC")
-                            ->setMaxResults(15)
+                            ->setMaxResults(35)
                             ->getQuery()
                             ->getResult();                            
             
