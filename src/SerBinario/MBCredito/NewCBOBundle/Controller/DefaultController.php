@@ -52,7 +52,7 @@ class DefaultController extends Controller
                
                 #Executando e recuperando o resultado
                 $resultUpload = $arquivoCBFRN->save($arquivoCBF); 
-                var_dump($resultUpload);exit;
+                
                 #Verifica se a o upload foi realizado com sucesso
                 if(!$resultUpload) {
                     $this->get('session')->getFlashBag()->add('danger', "Erro ao importar o arquivo!");
