@@ -38,7 +38,7 @@ class ArquivoCBFDAO
             $this->manager->flush();
             
             return $entity;
-        } catch (\Exception $ex) {var_dump($ex->getMessage());exit;
+        } catch (\Exception $ex) {
             return false;
         }
     }
