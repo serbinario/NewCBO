@@ -15,7 +15,7 @@ class DefaultController extends Controller
 {
     /**
      * @Route("viewImportFile", name="viewImportFile")
-     * @Template("")
+     * @Template()
      */
     public function viewImportFileAction(Request $request)
     {
@@ -97,13 +97,13 @@ class DefaultController extends Controller
     }
     
     /**
-     * @Route("/delete/{id}", name="delete")
+     * @Route("/delete/{id}", name="deleteCBO")
      */
     public function delete($id)
     {
         $manager = $this->getDoctrine()->getManager();
         $entity  = $manager->find("NewCBOBundle:ArquivoCabecalho", $id);
-        dd($entity);
+        
         $manager->remove($entity);
         $manager->flush();
         
@@ -159,7 +159,7 @@ class DefaultController extends Controller
     
     /**
      * @Route("gridTransacoes", name="gridTransacoes")
-     * @Template("")
+     * @Template()
      */
     public function gridTransacoesAction(Request $request)
     {
