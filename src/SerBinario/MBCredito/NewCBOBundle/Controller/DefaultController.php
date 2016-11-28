@@ -239,10 +239,10 @@ class DefaultController extends Controller
                 $transacoesArray[$i]['nome']     = $resultCliente[$i]->getNomeOperadores();
                 $transacoesArray[$i]['chave']    = $resultCliente[$i]->getCodOperadores();
                 
-                $transacoes = $transacaoRN->findByCodTransacao("068", $resultCliente[$i]->getIdOperadores(), $whereCamposPesquisa);
+                $transacoes = $transacaoRN->findByCodOperacao("068", $resultCliente[$i]->getIdOperadores(), $whereCamposPesquisa);
                 
                 foreach ($transacoes as $respotaliquida) {
-                    $transacao = $transacaoRN->findByCodOperacao($respotaliquida->getNumeroPropostaTransacoes(), "065");
+                    $transacao = $transacaoRN->findByCodTransacao($respotaliquida->getNumeroPropostaTransacoes(), "065");
 
                     if($respotaliquida) {
                         $valorLiquido  = $respotaliquida->getValorTrocoTransacoes() != 0 ? $respotaliquida->getValorTrocoTransacoes() : $respotaliquida->getValorTransacoes();
