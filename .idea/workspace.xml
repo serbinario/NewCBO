@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94ec9ae4-9987-4b05-b22a-42d67bfc7a1d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/MBCredito/NewCBOBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/SerBinario/MBCredito/NewCBOBundle/Controller/DefaultController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/MBCredito/NewCBOBundle/DAO/TransacoesDAO.php" afterPath="$PROJECT_DIR$/src/SerBinario/MBCredito/NewCBOBundle/DAO/TransacoesDAO.php" />
     </list>
     <ignored path="NewCBOWeb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,8 +31,8 @@
       <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/NewCBOBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="241" column="61" selection-start-line="241" selection-start-column="61" selection-end-line="241" selection-end-column="61" />
+            <state relative-caret-position="306">
+              <caret line="244" column="64" selection-start-line="244" selection-start-column="64" selection-end-line="244" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -41,8 +41,8 @@
       <file leaf-file-name="TransacoesDAO.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/NewCBOBundle/DAO/TransacoesDAO.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="138" column="35" selection-start-line="138" selection-start-column="35" selection-end-line="138" selection-end-column="35" />
+            <state relative-caret-position="104">
+              <caret line="84" column="37" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -92,7 +92,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Entity/Clientes.php" />
         <option value="$PROJECT_DIR$/app/config/security.yml" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Resources/views/Default/gridChamadas.html.twig" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/CallCenterBundle/Controller/DefaultController.php" />
@@ -142,6 +141,7 @@
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/NewCBOBundle/RN/CBFRN.php" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/NewCBOBundle/DAO/ArquivoCBFDAO.php" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/NewCBOBundle/Util/GridClass.php" />
+        <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/NewCBOBundle/DAO/TransacoesDAO.php" />
         <option value="$PROJECT_DIR$/src/SerBinario/MBCredito/NewCBOBundle/Controller/DefaultController.php" />
       </list>
     </option>
@@ -378,12 +378,12 @@
       <workItem from="1479476596829" duration="2150000" />
       <workItem from="1479481578000" duration="1749000" />
       <workItem from="1479723256282" duration="2662000" />
-      <workItem from="1480333249855" duration="2139000" />
+      <workItem from="1480333249855" duration="2643000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15528000" />
+    <option name="totallyTimeSpent" value="16032000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -776,16 +776,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/NewCBOBundle/DAO/TransacoesDAO.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="138" column="35" selection-start-line="138" selection-start-column="35" selection-end-line="138" selection-end-column="35" />
+        <state relative-caret-position="104">
+          <caret line="84" column="37" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SerBinario/MBCredito/NewCBOBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="241" column="61" selection-start-line="241" selection-start-column="61" selection-end-line="241" selection-end-column="61" />
+        <state relative-caret-position="306">
+          <caret line="244" column="64" selection-start-line="244" selection-start-column="64" selection-end-line="244" selection-end-column="64" />
           <folding />
         </state>
       </provider>

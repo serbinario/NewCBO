@@ -126,7 +126,7 @@ class TransacoesDAO
      * @param type $codigo
      * @return boolean
      */
-    public function findByCodTransacao($codigo, $data = array(), $operador = "")
+    public function findByCodTransacao($codigo, $operador = "", $data = array())
     {
         try {
             $qb = $this->manager->createQueryBuilder();
@@ -137,7 +137,8 @@ class TransacoesDAO
             $qb->andWhere("a.codTransacoes = :codigo");
             
             if(count($data) == 2) {
-                $qb->andWhere($qb->expr()->between("a.dataTransacoes", ":dataIn", ":dataFin"));
+                //$qb->andWhere($qb->expr()->between("a.dataTransacoes", ":dataIn", ":dataFin"));
+                $qb->andWhere($qb->expr()->between("a.dataMovimentoTransacoes", ":dataIn", ":dataFin"));
                 $qb->setParameter("dataIn", $data['dataIn']->format("Y-m-d"));
                 $qb->setParameter("dataFin", $data["dataFi"]->format("Y-m-d"));
             }
