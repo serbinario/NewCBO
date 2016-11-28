@@ -135,7 +135,7 @@ class TransacoesDAO
             $qb->join("a.operadoresOperadores", "b");
             $qb->where("b.idOperadores = :operador");
             $qb->andWhere("a.codTransacoes = :codigo");
-            
+
             if(count($data) == 2) {
                 //$qb->andWhere($qb->expr()->between("a.dataTransacoes", ":dataIn", ":dataFin"));
                 $qb->andWhere($qb->expr()->between("a.dataMovimentoTransacoes", ":dataIn", ":dataFin"));
@@ -147,7 +147,7 @@ class TransacoesDAO
             $qb->setParameter("codigo", $codigo);
             
             return $qb->getQuery()->getResult();
-        } catch (\Exception $ex) {            
+        } catch (\Exception $ex) {
             return null;
         }
     }

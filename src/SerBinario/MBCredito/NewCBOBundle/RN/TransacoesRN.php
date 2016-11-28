@@ -32,7 +32,7 @@ class TransacoesRN
      */
     public function findByCodTransacao($codigo, $operador, $data = array())
     {
-        $result = $this->dao->findByCodTransacao($codigo, $data, $operador);
+        $result = $this->dao->findByCodTransacao($codigo, $operador, $data);
         
         return $result;
     }

@@ -238,9 +238,9 @@ class DefaultController extends Controller
                 $transacoesArray[$i]['DT_RowId'] = "row_".$resultCliente[$i]->getIdOperadores();    
                 $transacoesArray[$i]['nome']     = $resultCliente[$i]->getNomeOperadores();
                 $transacoesArray[$i]['chave']    = $resultCliente[$i]->getCodOperadores();
-                
+         
                 $transacoes = $transacaoRN->findByCodTransacao("068", $resultCliente[$i]->getIdOperadores(), $whereCamposPesquisa);
-                
+
                 foreach ($transacoes as $respotaliquida) {
                     $transacao = $transacaoRN->findByCodOperacao($respotaliquida->getNumeroPropostaTransacoes(), "065");
 
